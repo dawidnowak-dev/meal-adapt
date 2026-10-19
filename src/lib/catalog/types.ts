@@ -119,10 +119,23 @@ export interface CatalogConflict {
   path: string[];
 }
 
-/** Test-only removals never mutate the catalog's active substitutions. */
+/** A candidate rule that the future validator must not apply, and why. */
+export interface CatalogSkippedSubstitution {
+  substitutionId: string;
+  /** target-conflict, incomplete-rule, context-mismatch, template-mismatch or unit-mismatch. */
+  reason: string;
+  /** For target-conflict: target product to excluded product; otherwise empty. */
+  path: string[];
+}
+
+/**
+ * Test-only removals applied to a copy of the named substitutions for one case.
+ * They never mutate the catalog's active substitutions and are not active rules.
+ */
 export interface CatalogTestOnlyOverlay {
   substitutions: {
     substitutionId: string;
+    /** Required rule fields removed for this case, e.g. quantity or instructionChanges. */
     removeFields: string[];
   }[];
 }
@@ -134,13 +147,29 @@ export interface CatalogCase {
   recipe: CatalogRecipe;
   exclusionIds: string[];
   testOnlyOverlay?: CatalogTestOnlyOverlay;
+  /**
+   * Deliberate input mismatch against the reference template: template-id,
+   * template-version, missing-anchor, duplicate-step-id or changed-step-text.
+   */
   templateMismatch?: string;
   expected: {
+    /** accepted, substituted or rejected. */
     outcome: string;
+    /** no-conflict, conflict-resolved, unresolved-conflict or unknown-ingredient. */
     reason: string;
+    /** Conflicts of the input recipe; each path follows explicit contains edges. */
     conflicts: CatalogConflict[];
+    /** Applied rules; empty unless the outcome is substituted. */
     substitutionIds: string[];
+    skippedSubstitutions: CatalogSkippedSubstitution[];
     /** Complete unchanged or substituted recipe; omitted for rejection. */
     recipe?: CatalogRecipe;
   };
+}
+
+/** Acceptance examples bound to one catalog version. */
+export interface CatalogCaseSet {
+  schemaVersion: number;
+  catalogVersion: number;
+  cases: CatalogCase[];
 }

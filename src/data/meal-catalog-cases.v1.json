@@ -1,0 +1,3359 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": 1,
+  "cases": [
+    {
+      "id": "crepes-no-exclusions-unchanged",
+      "caseKind": "compatible-unchanged",
+      "catalogVersion": 1,
+      "exclusionIds": [],
+      "recipe": {
+        "id": "crepes-basic-v1",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "accepted",
+        "reason": "no-conflict",
+        "conflicts": [],
+        "substitutionIds": [],
+        "skippedSubstitutions": [],
+        "recipe": {
+          "id": "crepes-basic-v1",
+          "context": "crepes",
+          "templateId": "crepes-basic",
+          "templateVersion": 1,
+          "ingredients": [
+            {
+              "id": "flour",
+              "productId": "wheat-flour",
+              "amount": 120,
+              "unit": "g"
+            },
+            {
+              "id": "milk",
+              "productId": "cow-milk",
+              "amount": 360,
+              "unit": "ml"
+            },
+            {
+              "id": "eggs",
+              "productId": "hen-egg",
+              "amount": 2,
+              "unit": "szt."
+            },
+            {
+              "id": "oil",
+              "productId": "rapeseed-oil",
+              "amount": 15,
+              "unit": "ml"
+            }
+          ],
+          "steps": [
+            {
+              "id": "mix-liquids",
+              "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+              "ingredientIds": ["milk", "eggs"],
+              "parameters": [
+                {
+                  "name": "milkAmount",
+                  "ingredientId": "milk",
+                  "field": "amount"
+                },
+                {
+                  "name": "milkUnit",
+                  "ingredientId": "milk",
+                  "field": "unit"
+                },
+                {
+                  "name": "milkName",
+                  "ingredientId": "milk",
+                  "field": "productName"
+                },
+                {
+                  "name": "eggsAmount",
+                  "ingredientId": "eggs",
+                  "field": "amount"
+                },
+                {
+                  "name": "eggsUnit",
+                  "ingredientId": "eggs",
+                  "field": "unit"
+                },
+                {
+                  "name": "eggsName",
+                  "ingredientId": "eggs",
+                  "field": "productName"
+                }
+              ]
+            },
+            {
+              "id": "add-flour",
+              "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+              "ingredientIds": ["flour"],
+              "parameters": [
+                {
+                  "name": "flourAmount",
+                  "ingredientId": "flour",
+                  "field": "amount"
+                },
+                {
+                  "name": "flourUnit",
+                  "ingredientId": "flour",
+                  "field": "unit"
+                },
+                {
+                  "name": "flourName",
+                  "ingredientId": "flour",
+                  "field": "productName"
+                }
+              ]
+            },
+            {
+              "id": "rest-batter",
+              "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+              "ingredientIds": ["flour", "milk", "eggs"],
+              "parameters": []
+            },
+            {
+              "id": "prepare-pan",
+              "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+              "ingredientIds": ["oil"],
+              "parameters": [
+                {
+                  "name": "oilAmount",
+                  "ingredientId": "oil",
+                  "field": "amount"
+                },
+                {
+                  "name": "oilUnit",
+                  "ingredientId": "oil",
+                  "field": "unit"
+                },
+                {
+                  "name": "oilName",
+                  "ingredientId": "oil",
+                  "field": "productName"
+                }
+              ]
+            },
+            {
+              "id": "cook-crepes",
+              "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+              "ingredientIds": ["flour", "milk", "eggs", "oil"],
+              "parameters": []
+            },
+            {
+              "id": "serve-crepes",
+              "text": "Podawaj gotowe naleśniki bez nadzienia.",
+              "ingredientIds": ["flour", "milk", "eggs", "oil"],
+              "parameters": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "us-01-cow-milk-to-pea-drink",
+      "caseKind": "substitution-first-candidate",
+      "catalogVersion": 1,
+      "exclusionIds": ["cow-milk"],
+      "recipe": {
+        "id": "crepes-basic-v1",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "substituted",
+        "reason": "conflict-resolved",
+        "conflicts": [
+          {
+            "ingredientId": "milk",
+            "exclusionId": "cow-milk",
+            "path": ["cow-milk"]
+          }
+        ],
+        "substitutionIds": ["cow-milk-to-pea-drink-unsweetened-crepes-v1"],
+        "skippedSubstitutions": [],
+        "recipe": {
+          "id": "crepes-basic-v1",
+          "context": "crepes",
+          "templateId": "crepes-basic",
+          "templateVersion": 1,
+          "ingredients": [
+            {
+              "id": "flour",
+              "productId": "wheat-flour",
+              "amount": 120,
+              "unit": "g"
+            },
+            {
+              "id": "milk",
+              "productId": "pea-drink-unsweetened",
+              "amount": 360,
+              "unit": "ml"
+            },
+            {
+              "id": "eggs",
+              "productId": "hen-egg",
+              "amount": 2,
+              "unit": "szt."
+            },
+            {
+              "id": "oil",
+              "productId": "rapeseed-oil",
+              "amount": 15,
+              "unit": "ml"
+            }
+          ],
+          "steps": [
+            {
+              "id": "prepare-pea-drink",
+              "text": "Wstrząśnij opakowaniem składnika: {drinkName}, aby wymieszać jego zawartość. Następnie odmierz {drinkAmount} {drinkUnit} tego napoju do ciasta.",
+              "ingredientIds": ["milk"],
+              "parameters": [
+                {
+                  "name": "drinkName",
+                  "ingredientId": "milk",
+                  "field": "productName"
+                },
+                {
+                  "name": "drinkAmount",
+                  "ingredientId": "milk",
+                  "field": "amount"
+                },
+                {
+                  "name": "drinkUnit",
+                  "ingredientId": "milk",
+                  "field": "unit"
+                }
+              ]
+            },
+            {
+              "id": "mix-liquids",
+              "text": "Do miski wlej odmierzone {drinkAmount} {drinkUnit} składnika: {drinkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+              "ingredientIds": ["milk", "eggs"],
+              "parameters": [
+                {
+                  "name": "drinkName",
+                  "ingredientId": "milk",
+                  "field": "productName"
+                },
+                {
+                  "name": "drinkAmount",
+                  "ingredientId": "milk",
+                  "field": "amount"
+                },
+                {
+                  "name": "drinkUnit",
+                  "ingredientId": "milk",
+                  "field": "unit"
+                },
+                {
+                  "name": "eggsAmount",
+                  "ingredientId": "eggs",
+                  "field": "amount"
+                },
+                {
+                  "name": "eggsUnit",
+                  "ingredientId": "eggs",
+                  "field": "unit"
+                },
+                {
+                  "name": "eggsName",
+                  "ingredientId": "eggs",
+                  "field": "productName"
+                }
+              ]
+            },
+            {
+              "id": "add-flour",
+              "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+              "ingredientIds": ["flour"],
+              "parameters": [
+                {
+                  "name": "flourAmount",
+                  "ingredientId": "flour",
+                  "field": "amount"
+                },
+                {
+                  "name": "flourUnit",
+                  "ingredientId": "flour",
+                  "field": "unit"
+                },
+                {
+                  "name": "flourName",
+                  "ingredientId": "flour",
+                  "field": "productName"
+                }
+              ]
+            },
+            {
+              "id": "rest-batter",
+              "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+              "ingredientIds": ["flour", "milk", "eggs"],
+              "parameters": []
+            },
+            {
+              "id": "prepare-pan",
+              "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+              "ingredientIds": ["oil"],
+              "parameters": [
+                {
+                  "name": "oilAmount",
+                  "ingredientId": "oil",
+                  "field": "amount"
+                },
+                {
+                  "name": "oilUnit",
+                  "ingredientId": "oil",
+                  "field": "unit"
+                },
+                {
+                  "name": "oilName",
+                  "ingredientId": "oil",
+                  "field": "productName"
+                }
+              ]
+            },
+            {
+              "id": "cook-crepes",
+              "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+              "ingredientIds": ["flour", "milk", "eggs", "oil"],
+              "parameters": []
+            },
+            {
+              "id": "serve-crepes",
+              "text": "Podawaj gotowe naleśniki bez nadzienia.",
+              "ingredientIds": ["flour", "milk", "eggs", "oil"],
+              "parameters": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cow-milk-and-pea-fallback-to-oat-drink",
+      "caseKind": "substitution-fallback",
+      "catalogVersion": 1,
+      "exclusionIds": ["cow-milk", "pea"],
+      "recipe": {
+        "id": "crepes-basic-v1",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "substituted",
+        "reason": "conflict-resolved",
+        "conflicts": [
+          {
+            "ingredientId": "milk",
+            "exclusionId": "cow-milk",
+            "path": ["cow-milk"]
+          }
+        ],
+        "substitutionIds": ["cow-milk-to-oat-drink-unsweetened-crepes-v1"],
+        "skippedSubstitutions": [
+          {
+            "substitutionId": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+            "reason": "target-conflict",
+            "path": ["pea-drink-unsweetened", "pea-protein", "pea"]
+          }
+        ],
+        "recipe": {
+          "id": "crepes-basic-v1",
+          "context": "crepes",
+          "templateId": "crepes-basic",
+          "templateVersion": 1,
+          "ingredients": [
+            {
+              "id": "flour",
+              "productId": "wheat-flour",
+              "amount": 120,
+              "unit": "g"
+            },
+            {
+              "id": "milk",
+              "productId": "oat-drink-unsweetened",
+              "amount": 360,
+              "unit": "ml"
+            },
+            {
+              "id": "eggs",
+              "productId": "hen-egg",
+              "amount": 2,
+              "unit": "szt."
+            },
+            {
+              "id": "oil",
+              "productId": "rapeseed-oil",
+              "amount": 15,
+              "unit": "ml"
+            }
+          ],
+          "steps": [
+            {
+              "id": "prepare-oat-drink",
+              "text": "Wstrząśnij opakowaniem składnika: {drinkName}, aby wymieszać jego zawartość. Następnie odmierz {drinkAmount} {drinkUnit} tego napoju do ciasta.",
+              "ingredientIds": ["milk"],
+              "parameters": [
+                {
+                  "name": "drinkName",
+                  "ingredientId": "milk",
+                  "field": "productName"
+                },
+                {
+                  "name": "drinkAmount",
+                  "ingredientId": "milk",
+                  "field": "amount"
+                },
+                {
+                  "name": "drinkUnit",
+                  "ingredientId": "milk",
+                  "field": "unit"
+                }
+              ]
+            },
+            {
+              "id": "mix-liquids",
+              "text": "Do miski wlej odmierzone {drinkAmount} {drinkUnit} składnika: {drinkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+              "ingredientIds": ["milk", "eggs"],
+              "parameters": [
+                {
+                  "name": "drinkName",
+                  "ingredientId": "milk",
+                  "field": "productName"
+                },
+                {
+                  "name": "drinkAmount",
+                  "ingredientId": "milk",
+                  "field": "amount"
+                },
+                {
+                  "name": "drinkUnit",
+                  "ingredientId": "milk",
+                  "field": "unit"
+                },
+                {
+                  "name": "eggsAmount",
+                  "ingredientId": "eggs",
+                  "field": "amount"
+                },
+                {
+                  "name": "eggsUnit",
+                  "ingredientId": "eggs",
+                  "field": "unit"
+                },
+                {
+                  "name": "eggsName",
+                  "ingredientId": "eggs",
+                  "field": "productName"
+                }
+              ]
+            },
+            {
+              "id": "add-flour",
+              "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+              "ingredientIds": ["flour"],
+              "parameters": [
+                {
+                  "name": "flourAmount",
+                  "ingredientId": "flour",
+                  "field": "amount"
+                },
+                {
+                  "name": "flourUnit",
+                  "ingredientId": "flour",
+                  "field": "unit"
+                },
+                {
+                  "name": "flourName",
+                  "ingredientId": "flour",
+                  "field": "productName"
+                }
+              ]
+            },
+            {
+              "id": "rest-batter",
+              "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+              "ingredientIds": ["flour", "milk", "eggs"],
+              "parameters": []
+            },
+            {
+              "id": "prepare-pan",
+              "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+              "ingredientIds": ["oil"],
+              "parameters": [
+                {
+                  "name": "oilAmount",
+                  "ingredientId": "oil",
+                  "field": "amount"
+                },
+                {
+                  "name": "oilUnit",
+                  "ingredientId": "oil",
+                  "field": "unit"
+                },
+                {
+                  "name": "oilName",
+                  "ingredientId": "oil",
+                  "field": "productName"
+                }
+              ]
+            },
+            {
+              "id": "cook-crepes",
+              "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+              "ingredientIds": ["flour", "milk", "eggs", "oil"],
+              "parameters": []
+            },
+            {
+              "id": "serve-crepes",
+              "text": "Podawaj gotowe naleśniki bez nadzienia.",
+              "ingredientIds": ["flour", "milk", "eggs", "oil"],
+              "parameters": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "wheat-flour-indirect-conflict-rejected",
+      "caseKind": "indirect-conflict-rejected",
+      "catalogVersion": 1,
+      "exclusionIds": ["wheat"],
+      "recipe": {
+        "id": "crepes-basic-v1",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "flour",
+            "exclusionId": "wheat",
+            "path": ["wheat-flour", "wheat"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": []
+      }
+    },
+    {
+      "id": "walnut-variant-direct-conflict-rejected",
+      "caseKind": "direct-conflict-rejected",
+      "catalogVersion": 1,
+      "exclusionIds": ["walnut"],
+      "recipe": {
+        "id": "crepes-walnut-v1",
+        "context": "crepes",
+        "templateId": "crepes-walnut",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          },
+          {
+            "id": "walnuts",
+            "productId": "walnut",
+            "amount": 30,
+            "unit": "g"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes-walnuts",
+            "text": "Podawaj gotowe naleśniki posypane {walnutsAmount} {walnutsUnit} składnika: {walnutsName}.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil", "walnuts"],
+            "parameters": [
+              {
+                "name": "walnutsAmount",
+                "ingredientId": "walnuts",
+                "field": "amount"
+              },
+              {
+                "name": "walnutsUnit",
+                "ingredientId": "walnuts",
+                "field": "unit"
+              },
+              {
+                "name": "walnutsName",
+                "ingredientId": "walnuts",
+                "field": "productName"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "walnuts",
+            "exclusionId": "walnut",
+            "path": ["walnut"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": []
+      }
+    },
+    {
+      "id": "pea-product-direct-conflict-rejected",
+      "caseKind": "direct-conflict-rejected",
+      "catalogVersion": 1,
+      "exclusionIds": ["pea"],
+      "recipe": {
+        "id": "crepes-pea-v1",
+        "context": "crepes",
+        "templateId": "crepes-pea",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          },
+          {
+            "id": "peas",
+            "productId": "pea",
+            "amount": 100,
+            "unit": "g"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes-peas",
+            "text": "Podawaj gotowe naleśniki z {peasAmount} {peasUnit} ugotowanego składnika: {peasName}.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil", "peas"],
+            "parameters": [
+              {
+                "name": "peasAmount",
+                "ingredientId": "peas",
+                "field": "amount"
+              },
+              {
+                "name": "peasUnit",
+                "ingredientId": "peas",
+                "field": "unit"
+              },
+              {
+                "name": "peasName",
+                "ingredientId": "peas",
+                "field": "productName"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "peas",
+            "exclusionId": "pea",
+            "path": ["pea"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": []
+      }
+    },
+    {
+      "id": "unknown-ingredient-rejected",
+      "caseKind": "unknown-ingredient",
+      "catalogVersion": 1,
+      "exclusionIds": [],
+      "recipe": {
+        "id": "crepes-vanilla-v1",
+        "context": "crepes",
+        "templateId": "crepes-vanilla",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          },
+          {
+            "id": "vanilla",
+            "name": "ekstrakt waniliowy",
+            "amount": 5,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-vanilla",
+            "text": "Dodaj {vanillaAmount} {vanillaUnit} składnika: {vanillaName} i krótko wymieszaj.",
+            "ingredientIds": ["vanilla"],
+            "parameters": [
+              {
+                "name": "vanillaAmount",
+                "ingredientId": "vanilla",
+                "field": "amount"
+              },
+              {
+                "name": "vanillaUnit",
+                "ingredientId": "vanilla",
+                "field": "unit"
+              },
+              {
+                "name": "vanillaName",
+                "ingredientId": "vanilla",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs", "vanilla"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil", "vanilla"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil", "vanilla"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unknown-ingredient",
+        "conflicts": [],
+        "substitutionIds": [],
+        "skippedSubstitutions": []
+      }
+    },
+    {
+      "id": "ambiguous-milk-name-rejected",
+      "caseKind": "ambiguous-name",
+      "catalogVersion": 1,
+      "exclusionIds": [],
+      "recipe": {
+        "id": "crepes-basic-v1",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "name": "mleko",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unknown-ingredient",
+        "conflicts": [],
+        "substitutionIds": [],
+        "skippedSubstitutions": []
+      }
+    },
+    {
+      "id": "rules-without-quantity-rejected",
+      "caseKind": "incomplete-rule-quantity",
+      "catalogVersion": 1,
+      "exclusionIds": ["cow-milk"],
+      "testOnlyOverlay": {
+        "substitutions": [
+          {
+            "substitutionId": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+            "removeFields": ["quantity"]
+          },
+          {
+            "substitutionId": "cow-milk-to-oat-drink-unsweetened-crepes-v1",
+            "removeFields": ["quantity"]
+          }
+        ]
+      },
+      "recipe": {
+        "id": "crepes-basic-v1",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "milk",
+            "exclusionId": "cow-milk",
+            "path": ["cow-milk"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": [
+          {
+            "substitutionId": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+            "reason": "incomplete-rule",
+            "path": []
+          },
+          {
+            "substitutionId": "cow-milk-to-oat-drink-unsweetened-crepes-v1",
+            "reason": "incomplete-rule",
+            "path": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "rules-without-instructions-rejected",
+      "caseKind": "incomplete-rule-instructions",
+      "catalogVersion": 1,
+      "exclusionIds": ["cow-milk"],
+      "testOnlyOverlay": {
+        "substitutions": [
+          {
+            "substitutionId": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+            "removeFields": ["instructionChanges"]
+          },
+          {
+            "substitutionId": "cow-milk-to-oat-drink-unsweetened-crepes-v1",
+            "removeFields": ["instructionChanges"]
+          }
+        ]
+      },
+      "recipe": {
+        "id": "crepes-basic-v1",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "milk",
+            "exclusionId": "cow-milk",
+            "path": ["cow-milk"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": [
+          {
+            "substitutionId": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+            "reason": "incomplete-rule",
+            "path": []
+          },
+          {
+            "substitutionId": "cow-milk-to-oat-drink-unsweetened-crepes-v1",
+            "reason": "incomplete-rule",
+            "path": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "crepes-rules-not-inherited-by-pancakes",
+      "caseKind": "context-mismatch",
+      "catalogVersion": 1,
+      "exclusionIds": ["cow-milk"],
+      "recipe": {
+        "id": "pancakes-basic-v1",
+        "context": "pancakes",
+        "templateId": "pancakes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 150,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 250,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 1,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-batter",
+            "text": "Wymieszaj {milkAmount} {milkUnit} składnika: {milkName}, {eggsAmount} {eggsUnit} składnika: {eggsName} oraz {flourAmount} {flourUnit} składnika: {flourName} na gęste ciasto.",
+            "ingredientIds": ["milk", "eggs", "flour"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              },
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "fry-pancakes",
+            "text": "Rozgrzej patelnię natłuszczoną {oilAmount} {oilUnit} składnika: {oilName}. Nakładaj łyżką porcje ciasta i smaż grube placki z obu stron do zrumienienia.",
+            "ingredientIds": ["oil", "flour", "milk", "eggs"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "serve-pancakes",
+            "text": "Podawaj gotowe placki bez dodatków.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "milk",
+            "exclusionId": "cow-milk",
+            "path": ["cow-milk"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": [
+          {
+            "substitutionId": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+            "reason": "context-mismatch",
+            "path": []
+          },
+          {
+            "substitutionId": "cow-milk-to-oat-drink-unsweetened-crepes-v1",
+            "reason": "context-mismatch",
+            "path": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "milk-in-grams-not-converted",
+      "caseKind": "unit-mismatch",
+      "catalogVersion": 1,
+      "exclusionIds": ["cow-milk"],
+      "recipe": {
+        "id": "crepes-basic-v1",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 370,
+            "unit": "g"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "milk",
+            "exclusionId": "cow-milk",
+            "path": ["cow-milk"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": [
+          {
+            "substitutionId": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+            "reason": "unit-mismatch",
+            "path": []
+          },
+          {
+            "substitutionId": "cow-milk-to-oat-drink-unsweetened-crepes-v1",
+            "reason": "unit-mismatch",
+            "path": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "template-mismatch-template-id",
+      "caseKind": "template-mismatch",
+      "catalogVersion": 1,
+      "templateMismatch": "template-id",
+      "exclusionIds": ["cow-milk"],
+      "recipe": {
+        "id": "crepes-custom-v1",
+        "context": "crepes",
+        "templateId": "crepes-custom",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "milk",
+            "exclusionId": "cow-milk",
+            "path": ["cow-milk"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": [
+          {
+            "substitutionId": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+            "reason": "template-mismatch",
+            "path": []
+          },
+          {
+            "substitutionId": "cow-milk-to-oat-drink-unsweetened-crepes-v1",
+            "reason": "template-mismatch",
+            "path": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "template-mismatch-template-version",
+      "caseKind": "template-mismatch",
+      "catalogVersion": 1,
+      "templateMismatch": "template-version",
+      "exclusionIds": ["cow-milk"],
+      "recipe": {
+        "id": "crepes-basic-v2",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 2,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "milk",
+            "exclusionId": "cow-milk",
+            "path": ["cow-milk"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": [
+          {
+            "substitutionId": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+            "reason": "template-mismatch",
+            "path": []
+          },
+          {
+            "substitutionId": "cow-milk-to-oat-drink-unsweetened-crepes-v1",
+            "reason": "template-mismatch",
+            "path": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "template-mismatch-missing-anchor",
+      "caseKind": "template-mismatch",
+      "catalogVersion": 1,
+      "templateMismatch": "missing-anchor",
+      "exclusionIds": ["cow-milk"],
+      "recipe": {
+        "id": "crepes-basic-v1",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "combine-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "milk",
+            "exclusionId": "cow-milk",
+            "path": ["cow-milk"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": [
+          {
+            "substitutionId": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+            "reason": "template-mismatch",
+            "path": []
+          },
+          {
+            "substitutionId": "cow-milk-to-oat-drink-unsweetened-crepes-v1",
+            "reason": "template-mismatch",
+            "path": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "template-mismatch-duplicate-step-id",
+      "caseKind": "template-mismatch",
+      "catalogVersion": 1,
+      "templateMismatch": "duplicate-step-id",
+      "exclusionIds": ["cow-milk"],
+      "recipe": {
+        "id": "crepes-basic-v1",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "mix-liquids",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "milk",
+            "exclusionId": "cow-milk",
+            "path": ["cow-milk"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": [
+          {
+            "substitutionId": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+            "reason": "template-mismatch",
+            "path": []
+          },
+          {
+            "substitutionId": "cow-milk-to-oat-drink-unsweetened-crepes-v1",
+            "reason": "template-mismatch",
+            "path": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "template-mismatch-changed-step-text",
+      "caseKind": "template-mismatch",
+      "catalogVersion": 1,
+      "templateMismatch": "changed-step-text",
+      "exclusionIds": ["cow-milk"],
+      "recipe": {
+        "id": "crepes-basic-v1",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Podgrzej {milkAmount} {milkUnit} składnika: {milkName} do zagotowania. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "milk",
+            "exclusionId": "cow-milk",
+            "path": ["cow-milk"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": [
+          {
+            "substitutionId": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+            "reason": "template-mismatch",
+            "path": []
+          },
+          {
+            "substitutionId": "cow-milk-to-oat-drink-unsweetened-crepes-v1",
+            "reason": "template-mismatch",
+            "path": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "milk-and-wheat-full-revalidation-rejected",
+      "caseKind": "full-revalidation",
+      "catalogVersion": 1,
+      "exclusionIds": ["cow-milk", "wheat"],
+      "recipe": {
+        "id": "crepes-basic-v1",
+        "context": "crepes",
+        "templateId": "crepes-basic",
+        "templateVersion": 1,
+        "ingredients": [
+          {
+            "id": "flour",
+            "productId": "wheat-flour",
+            "amount": 120,
+            "unit": "g"
+          },
+          {
+            "id": "milk",
+            "productId": "cow-milk",
+            "amount": 360,
+            "unit": "ml"
+          },
+          {
+            "id": "eggs",
+            "productId": "hen-egg",
+            "amount": 2,
+            "unit": "szt."
+          },
+          {
+            "id": "oil",
+            "productId": "rapeseed-oil",
+            "amount": 15,
+            "unit": "ml"
+          }
+        ],
+        "steps": [
+          {
+            "id": "mix-liquids",
+            "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "milkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "milkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "milkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "add-flour",
+            "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+            "ingredientIds": ["flour"],
+            "parameters": [
+              {
+                "name": "flourAmount",
+                "ingredientId": "flour",
+                "field": "amount"
+              },
+              {
+                "name": "flourUnit",
+                "ingredientId": "flour",
+                "field": "unit"
+              },
+              {
+                "name": "flourName",
+                "ingredientId": "flour",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "rest-batter",
+            "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+            "ingredientIds": ["flour", "milk", "eggs"],
+            "parameters": []
+          },
+          {
+            "id": "prepare-pan",
+            "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+            "ingredientIds": ["oil"],
+            "parameters": [
+              {
+                "name": "oilAmount",
+                "ingredientId": "oil",
+                "field": "amount"
+              },
+              {
+                "name": "oilUnit",
+                "ingredientId": "oil",
+                "field": "unit"
+              },
+              {
+                "name": "oilName",
+                "ingredientId": "oil",
+                "field": "productName"
+              }
+            ]
+          },
+          {
+            "id": "cook-crepes",
+            "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          },
+          {
+            "id": "serve-crepes",
+            "text": "Podawaj gotowe naleśniki bez nadzienia.",
+            "ingredientIds": ["flour", "milk", "eggs", "oil"],
+            "parameters": []
+          }
+        ]
+      },
+      "expected": {
+        "outcome": "rejected",
+        "reason": "unresolved-conflict",
+        "conflicts": [
+          {
+            "ingredientId": "milk",
+            "exclusionId": "cow-milk",
+            "path": ["cow-milk"]
+          },
+          {
+            "ingredientId": "flour",
+            "exclusionId": "wheat",
+            "path": ["wheat-flour", "wheat"]
+          }
+        ],
+        "substitutionIds": [],
+        "skippedSubstitutions": []
+      }
+    }
+  ]
+}

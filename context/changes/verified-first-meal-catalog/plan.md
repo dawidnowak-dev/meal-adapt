@@ -278,9 +278,9 @@ Stary manifest wdrożenia pozostaje zapisem wcześniej odebranego startera. Prze
 
 #### Automated
 
-- [ ] 2.1 Katalog i komplet przykładów przechodzą kontrolę: `node scripts/check-meal-catalog.mjs`.
-- [ ] 2.2 Testy poprawnych i celowo błędnych danych przechodzą: `node --test scripts/check-meal-catalog.test.mjs`.
-- [ ] 2.3 Kod i kontrakty fazy przechodzą lint oraz kontrolę typów: `npm run lint` i `npx --no-install astro check`.
+- [x] 2.1 Katalog i komplet przykładów przechodzą kontrolę: `node scripts/check-meal-catalog.mjs`.
+- [x] 2.2 Testy poprawnych i celowo błędnych danych przechodzą: `node --test scripts/check-meal-catalog.test.mjs`.
+- [x] 2.3 Kod i kontrakty fazy przechodzą lint oraz kontrolę typów: `npm run lint` i `npx --no-install astro check`.
 
 ### Phase 3: CI i ręczny odbiór
 
