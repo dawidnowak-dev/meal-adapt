@@ -270,9 +270,9 @@ Stary manifest wdrożenia pozostaje zapisem wcześniej odebranego startera. Prze
 
 #### Automated
 
-- [x] 1.1 Plik meal-catalog.v1.json jest poprawnym JSON: `node -e 'JSON.parse(require("node:fs").readFileSync("src/data/meal-catalog.v1.json", "utf8"))'`.
-- [x] 1.2 Kontrakt TypeScript przechodzi kontrolę projektu: `npx --no-install astro check`.
-- [x] 1.3 Zmiany fazy przechodzą lint: `npm run lint`.
+- [x] 1.1 Plik meal-catalog.v1.json jest poprawnym JSON: `node -e 'JSON.parse(require("node:fs").readFileSync("src/data/meal-catalog.v1.json", "utf8"))'`. — 5cba13e
+- [x] 1.2 Kontrakt TypeScript przechodzi kontrolę projektu: `npx --no-install astro check`. — 5cba13e
+- [x] 1.3 Zmiany fazy przechodzą lint: `npm run lint`. — 5cba13e
 
 ### Phase 2: Kontrole i przykłady odbioru
 
