@@ -56,6 +56,10 @@ npm run dev
 - `npm run lint:fix` - Auto-fix ESLint issues
 - `npm run format` - Run Prettier
 - `npm run smoke` - Smoke test the auth flow against a running server (`BASE_URL`, defaults to `http://localhost:4321`)
+- `npm run check:catalog` - Check integrity of the meal catalog and its acceptance cases (`src/data/meal-catalog*.v1.json`)
+- `npm run test:catalog` - Run the catalog checker tests (native `node:test`)
+
+The meal catalog data contract, versioning rules and review procedure are documented in [docs/catalog/README.md](docs/catalog/README.md).
 
 ## Project Structure
 
@@ -197,7 +201,7 @@ It needs a reachable Supabase instance (local or cloud) with email confirmation 
 
 GitHub Actions runs two jobs on every push and PR to `main`:
 
-- **ci** — lint, `astro check` and build. Configure `SUPABASE_URL` and `SUPABASE_KEY` as repository secrets for the build step.
+- **ci** — meal catalog check and tests (`npm run check:catalog`, `npm run test:catalog`), lint, `astro check` and build. Configure `SUPABASE_URL` and `SUPABASE_KEY` as repository secrets for the build step.
 - **smoke** — starts a local Supabase via the Supabase CLI, builds, serves the production preview on the Cloudflare runtime and runs `npm run smoke` against it. No secrets required.
 
 ## License

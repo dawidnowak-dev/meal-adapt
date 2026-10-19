@@ -16,6 +16,8 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - run: npm run check:catalog
+      - run: npm run test:catalog
       - run: npx astro sync
       - run: npm run lint
       - run: npx astro check

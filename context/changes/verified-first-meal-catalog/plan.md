@@ -278,19 +278,19 @@ Stary manifest wdrożenia pozostaje zapisem wcześniej odebranego startera. Prze
 
 #### Automated
 
-- [x] 2.1 Katalog i komplet przykładów przechodzą kontrolę: `node scripts/check-meal-catalog.mjs`.
-- [x] 2.2 Testy poprawnych i celowo błędnych danych przechodzą: `node --test scripts/check-meal-catalog.test.mjs`.
-- [x] 2.3 Kod i kontrakty fazy przechodzą lint oraz kontrolę typów: `npm run lint` i `npx --no-install astro check`.
+- [x] 2.1 Katalog i komplet przykładów przechodzą kontrolę: `node scripts/check-meal-catalog.mjs`. — 9c5eb08
+- [x] 2.2 Testy poprawnych i celowo błędnych danych przechodzą: `node --test scripts/check-meal-catalog.test.mjs`. — 9c5eb08
+- [x] 2.3 Kod i kontrakty fazy przechodzą lint oraz kontrolę typów: `npm run lint` i `npx --no-install astro check`. — 9c5eb08
 
 ### Phase 3: CI i ręczny odbiór
 
 #### Automated
 
-- [ ] 3.1 Polecenia docelowe przechodzą: `npm run check:catalog` i `npm run test:catalog`.
-- [ ] 3.2 Końcowe kontrole projektu przechodzą na Node 22.23.3: `npx --no-install astro sync`, `npm run lint`, `npx --no-install astro check` i `npm run build`.
-- [ ] 3.3 Plik CI zawiera obie kontrole przed buildem, dokumentacja wskazuje istniejące pliki i polecenia, a skróty danych w zapisie odbioru odpowiadają bieżącym JSON; weryfikacja lokalna bez publikacji i bez odświeżania manifestu stagingu.
+- [x] 3.1 Polecenia docelowe przechodzą: `npm run check:catalog` i `npm run test:catalog`.
+- [x] 3.2 Końcowe kontrole projektu przechodzą na Node 22.23.3: `npx --no-install astro sync`, `npm run lint`, `npx --no-install astro check` i `npm run build`.
+- [x] 3.3 Plik CI zawiera obie kontrole przed buildem, dokumentacja wskazuje istniejące pliki i polecenia, a skróty danych w zapisie odbioru odpowiadają bieżącym JSON; weryfikacja lokalna bez publikacji i bez odświeżania manifestu stagingu.
 
 #### Manual
 
-- [ ] 3.4 Twórca zatwierdził produkty, pełne powiązania, kolejność napój grochowy → owsiany, proporcje 1:1 i instrukcje w kontekście naleśników; potwierdzenie zapisano dla bieżących skrótów danych.
-- [ ] 3.5 Twórca zatwierdził oczekiwane wyniki wszystkich przykładów, w tym pominięcie napoju grochowego, odmowy i brak domyślnego znaczenia „mleko”; potwierdzenie zapisano w catalog-review.md.
+- [x] 3.4 Twórca zatwierdził produkty, pełne powiązania, kolejność napój grochowy → owsiany, proporcje 1:1 i instrukcje w kontekście naleśników; potwierdzenie zapisano dla bieżących skrótów danych.
+- [x] 3.5 Twórca zatwierdził oczekiwane wyniki wszystkich przykładów, w tym pominięcie napoju grochowego, odmowy i brak domyślnego znaczenia „mleko”; potwierdzenie zapisano w catalog-review.md.
