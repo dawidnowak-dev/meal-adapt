@@ -60,3 +60,6 @@ service-account*.json
 
 # jetbrains setting folder
 .idea/
+
+# course materials (local reference only)
+lessons/
