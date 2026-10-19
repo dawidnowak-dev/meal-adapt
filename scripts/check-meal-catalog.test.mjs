@@ -117,6 +117,13 @@ describe("checkCatalog catalog diagnostics", () => {
     expectDiagnostic(catalog, cases, "ambiguous-name", "catalog.products[11].aliases[1]");
   });
 
+  test("alias repeating the product's own name after normalization", () => {
+    const { catalog, cases } = data();
+    const milk = product(catalog, "cow-milk");
+    milk.aliases.push(`  ${milk.name.toUpperCase()} `);
+    expectDiagnostic(catalog, cases, "duplicate-reference", "catalog.products[0].aliases");
+  });
+
   test("duplicate product id", () => {
     const { catalog, cases } = data();
     product(catalog, "oat").id = "water";
@@ -133,6 +140,15 @@ describe("checkCatalog catalog diagnostics", () => {
     const { catalog, cases } = data();
     delete rule(catalog, OAT_RULE).quantity;
     expectDiagnostic(catalog, cases, "missing-field", "catalog.substitutions[1].quantity");
+  });
+
+  test("a missing rule field does not hide the rule's other diagnostics", () => {
+    const { catalog, cases } = data();
+    const broken = rule(catalog, PEA_RULE);
+    delete broken.quantity;
+    broken.sourceProductId = "goat-milk";
+    expectDiagnostic(catalog, cases, "missing-field", "catalog.substitutions[0].quantity");
+    expectDiagnostic(catalog, cases, "unknown-reference", "catalog.substitutions[0].sourceProductId");
   });
 
   test("incomplete instruction step", () => {
@@ -198,6 +214,12 @@ describe("checkCatalog catalog diagnostics", () => {
     rule(catalog, OAT_RULE).appliesTo.templateVersion = 2;
     expectDiagnostic(catalog, cases, "applies-to-mismatch", "catalog.substitutions[0].appliesTo");
     expectDiagnostic(catalog, cases, "applies-to-mismatch", "catalog.substitutions[1].appliesTo");
+  });
+
+  test("reference template source unit that no rule accepts", () => {
+    const { catalog, cases } = data();
+    catalog.referenceRecipe.ingredients.find((candidate) => candidate.productId === "cow-milk").unit = "g";
+    expectDiagnostic(catalog, cases, "template-unit-mismatch", "catalog.substitutions[0].quantity.fromUnit");
   });
 
   test("rule outside the crepes context", () => {
@@ -307,10 +329,51 @@ describe("checkCatalog case diagnostics", () => {
     expectDiagnostic(catalog, cases, "missing-conflict", "cases.cases[17].expected.conflicts");
   });
 
+  test("repeated expected conflict entry", () => {
+    const { catalog, cases } = data();
+    const conflicts = example(cases, "wheat-flour-indirect-conflict-rejected").expected.conflicts;
+    conflicts.push({ ...conflicts[0] });
+    expectDiagnostic(catalog, cases, "duplicate-reference", "cases.cases[3].expected.conflicts[1]");
+  });
+
   test("substituted result that still conflicts", () => {
     const { catalog, cases } = data();
     example(cases, "cow-milk-and-pea-fallback-to-oat-drink").exclusionIds.push("wheat");
     expectDiagnostic(catalog, cases, "result-conflict", "cases.cases[2].expected.recipe.ingredients");
+  });
+
+  test("substitution that bypasses a higher-ranked candidate", () => {
+    const { catalog, cases } = data();
+    example(cases, "us-01-cow-milk-to-pea-drink").expected.substitutionIds = [OAT_RULE];
+    expectDiagnostic(catalog, cases, "missing-skip", "cases.cases[1].expected.skippedSubstitutions");
+  });
+
+  test("declared unit mismatch that the recipe does not exhibit", () => {
+    const { catalog, cases } = data();
+    const milk = example(cases, "milk-in-grams-not-converted").recipe.ingredients.find(
+      (candidate) => candidate.productId === "cow-milk",
+    );
+    milk.unit = "ml";
+    expectDiagnostic(catalog, cases, "unit-mismatch-not-present", "cases.cases[11].recipe.ingredients");
+  });
+
+  test("declared context mismatch that the recipe does not exhibit", () => {
+    const { catalog, cases } = data();
+    example(cases, "crepes-rules-not-inherited-by-pancakes").recipe.context = "crepes";
+    expectDiagnostic(catalog, cases, "context-mismatch-not-present", "cases.cases[10].recipe.context");
+  });
+
+  test("substituted amount that ignores the rule ratio", () => {
+    const { catalog, cases } = data();
+    const result = example(cases, "us-01-cow-milk-to-pea-drink").expected.recipe;
+    result.ingredients.find((candidate) => candidate.productId === "pea-drink-unsweetened").amount = 999;
+    expectDiagnostic(catalog, cases, "quantity-mismatch", "cases.cases[1].expected.recipe.ingredients");
+  });
+
+  test("fallback without a recorded skip", () => {
+    const { catalog, cases } = data();
+    example(cases, "cow-milk-and-pea-fallback-to-oat-drink").expected.skippedSubstitutions = [];
+    expectDiagnostic(catalog, cases, "missing-skip", "cases.cases[2].expected.skippedSubstitutions");
   });
 
   test("rejection must not carry a partial substitution", () => {

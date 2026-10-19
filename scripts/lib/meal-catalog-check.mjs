@@ -224,6 +224,8 @@ export function checkCatalog(catalog, cases) {
       const owner = names.get(normalized);
       if (owner !== undefined && owner !== product.id) {
         report("ambiguous-name", namePath, `"${normalized}" already identifies product "${owner}".`);
+      } else if (owner === product.id) {
+        report("duplicate-reference", namePath, `"${normalized}" repeats another name of this product.`);
       } else {
         names.set(normalized, product.id);
       }
@@ -455,41 +457,45 @@ export function checkCatalog(catalog, cases) {
   const priorities = new Map();
   catalog.substitutions.forEach((rule, index) => {
     const path = `catalog.substitutions[${index}]`;
-    if (
-      !requireFields(rule, path, {
-        id: "string",
-        sourceProductId: "string",
-        targetProductId: "string",
-        context: "string",
-        appliesTo: "object",
-        priority: "number",
-        quantity: "object",
-        instructionChanges: "array",
-      })
-    ) {
-      if (isObject(rule) && typeof rule.id === "string") substitutions.set(rule.id, rule);
-      return;
+    // Missing fields are reported once here; every present field is still checked below, so one gap hides nothing.
+    requireFields(rule, path, {
+      id: "string",
+      sourceProductId: "string",
+      targetProductId: "string",
+      context: "string",
+      appliesTo: "object",
+      priority: "number",
+      quantity: "object",
+      instructionChanges: "array",
+    });
+    if (!isObject(rule)) return;
+    if (typeof rule.id === "string") {
+      requireSlug(rule.id, `${path}.id`);
+      if (substitutions.has(rule.id)) report("duplicate-id", `${path}.id`, `Duplicate substitution id "${rule.id}".`);
+      else substitutions.set(rule.id, rule);
     }
-    requireSlug(rule.id, `${path}.id`);
-    if (substitutions.has(rule.id)) report("duplicate-id", `${path}.id`, `Duplicate substitution id "${rule.id}".`);
-    else substitutions.set(rule.id, rule);
 
+    const hasSource = typeof rule.sourceProductId === "string";
+    const hasTarget = typeof rule.targetProductId === "string";
     for (const field of ["sourceProductId", "targetProductId"]) {
-      if (!products.has(rule[field]))
+      if (typeof rule[field] === "string" && !products.has(rule[field]))
         report("unknown-reference", `${path}.${field}`, `"${rule[field]}" does not exist.`);
     }
-    if (rule.sourceProductId === rule.targetProductId) {
+    if (hasSource && hasTarget && rule.sourceProductId === rule.targetProductId) {
       report("invalid-substitution", `${path}.targetProductId`, "Target must differ from source.");
     } else if (products.has(rule.targetProductId) && reachable(rule.targetProductId).has(rule.sourceProductId)) {
       report("target-contains-source", `${path}.targetProductId`, "Target product contains the source product.");
     }
-    if (!SUPPORTED_CONTEXTS.includes(rule.context)) {
+    if (typeof rule.context === "string" && !SUPPORTED_CONTEXTS.includes(rule.context)) {
       report("unsupported-context", `${path}.context`, `Context must be one of: ${SUPPORTED_CONTEXTS.join(", ")}.`);
     }
-    if (referenceOk && rule.context !== reference.context) {
+    if (referenceOk && typeof rule.context === "string" && rule.context !== reference.context) {
       report("context-mismatch", `${path}.context`, "Rule context differs from the reference recipe context.");
     }
-    if (requireFields(rule.appliesTo, `${path}.appliesTo`, { templateId: "string", templateVersion: "number" })) {
+    if (
+      isObject(rule.appliesTo) &&
+      requireFields(rule.appliesTo, `${path}.appliesTo`, { templateId: "string", templateVersion: "number" })
+    ) {
       if (
         referenceOk &&
         (rule.appliesTo.templateId !== reference.templateId ||
@@ -502,9 +508,9 @@ export function checkCatalog(catalog, cases) {
         );
       }
     }
-    if (!isPositiveInteger(rule.priority)) {
+    if (typeof rule.priority === "number" && !isPositiveInteger(rule.priority)) {
       report("invalid-priority", `${path}.priority`, "Priority must be a positive integer.");
-    } else {
+    } else if (typeof rule.priority === "number") {
       const key = `${rule.sourceProductId}\u0000${rule.context}\u0000${rule.priority}`;
       if (priorities.has(key)) {
         report("duplicate-priority", `${path}.priority`, `Priority ${rule.priority} repeats ${priorities.get(key)}.`);
@@ -513,6 +519,7 @@ export function checkCatalog(catalog, cases) {
       }
     }
     if (
+      isObject(rule.quantity) &&
       requireFields(rule.quantity, `${path}.quantity`, {
         fromAmount: "number",
         fromUnit: "string",
@@ -533,14 +540,20 @@ export function checkCatalog(catalog, cases) {
         report("unsupported-ratio", `${path}.quantity`, "Active v1 rules support only a 1:1 ratio.");
       }
     }
-    if (referenceOk) {
-      const sourceInReference = reference.ingredients.some(
+    if (referenceOk && hasSource) {
+      const sourcesInReference = reference.ingredients.filter(
         (ingredient) => isObject(ingredient) && ingredient.productId === rule.sourceProductId,
       );
-      if (!sourceInReference) {
+      if (sourcesInReference.length === 0) {
         report("source-not-in-template", `${path}.sourceProductId`, "Source product is absent from the template.");
+      } else if (
+        isObject(rule.quantity) &&
+        sourcesInReference.some((ingredient) => ingredient.unit !== rule.quantity.fromUnit)
+      ) {
+        report("template-unit-mismatch", `${path}.quantity.fromUnit`, "Template source unit differs from fromUnit.");
       }
     }
+    if (!Array.isArray(rule.instructionChanges)) return;
     if (rule.instructionChanges.length === 0) {
       report("empty-instructions", `${path}.instructionChanges`, "Active rule needs instruction changes.");
     }
@@ -728,11 +741,21 @@ export function checkCatalog(catalog, cases) {
     const ingredient = (id) => ingredients.find((candidate) => candidate.id === id);
     const hasUnknown = ingredients.some((candidate) => Object.hasOwn(candidate, "name"));
 
+    const conflictKeys = new Set();
     expected.conflicts.forEach((conflict, index) => {
       const conflictPath = `${expectedPath}.conflicts[${index}]`;
       if (!requireFields(conflict, conflictPath, { ingredientId: "string", exclusionId: "string", path: "array" })) {
         return;
       }
+      const conflictKey = `${conflict.ingredientId}\u0000${conflict.exclusionId}`;
+      if (conflictKeys.has(conflictKey)) {
+        report(
+          "duplicate-reference",
+          conflictPath,
+          `Conflict ${conflict.ingredientId}/${conflict.exclusionId} repeats.`,
+        );
+      }
+      conflictKeys.add(conflictKey);
       if (!example.exclusionIds.includes(conflict.exclusionId)) {
         report("unknown-exclusion", `${conflictPath}.exclusionId`, "Conflict exclusion is not selected in this case.");
       }
@@ -848,6 +871,41 @@ export function checkCatalog(catalog, cases) {
       if (candidates.length === 0) {
         report("missing-skip", `${path}.exclusionIds`, `${example.caseKind} must exclude a source with candidates.`);
       }
+      // The declared mismatch must exist in the input recipe, as for template mismatches.
+      for (const id of recipeOk ? candidates : []) {
+        const rule = substitutions.get(id);
+        if (skipReason === "context-mismatch" && example.recipe.context === rule.context) {
+          report("context-mismatch-not-present", `${path}.recipe.context`, `Recipe context matches "${id}".`);
+        }
+        if (skipReason === "unit-mismatch") {
+          const sources = ingredients.filter((candidate) => candidate.productId === rule.sourceProductId);
+          if (
+            !isObject(rule.quantity) ||
+            sources.length === 0 ||
+            sources.some((s) => s.unit === rule.quantity.fromUnit)
+          ) {
+            report("unit-mismatch-not-present", `${path}.recipe.ingredients`, `Source unit matches "${id}".`);
+          }
+        }
+      }
+    }
+    // Candidate order: every same-source/context rule ranked before an applied rule must be recorded as skipped.
+    for (const id of expected.substitutionIds) {
+      const applied = substitutions.get(id);
+      if (applied === undefined || typeof applied.priority !== "number") continue;
+      for (const earlier of substitutions.values()) {
+        const ranksBefore =
+          earlier.sourceProductId === applied.sourceProductId &&
+          earlier.context === applied.context &&
+          typeof earlier.priority === "number" &&
+          earlier.priority < applied.priority;
+        if (ranksBefore && !skipped.some((entry) => entry.substitutionId === earlier.id)) {
+          report("missing-skip", `${expectedPath}.skippedSubstitutions`, `"${earlier.id}" ranks before "${id}".`);
+        }
+      }
+    }
+    if (example.caseKind === "substitution-fallback" && skipped.length === 0) {
+      report("missing-skip", `${expectedPath}.skippedSubstitutions`, "A fallback must record the skipped candidate.");
     }
 
     if (expected.outcome === "rejected") {
@@ -902,16 +960,29 @@ export function checkCatalog(catalog, cases) {
     for (const result of resultIngredients) {
       const input = ingredient(result.id);
       if (input !== undefined && input.productId !== result.productId) {
-        const applied = expected.substitutionIds.some((id) => {
-          const rule = substitutions.get(id);
-          return rule?.sourceProductId === input.productId && rule.targetProductId === result.productId;
-        });
-        if (!applied) {
+        const rule = expected.substitutionIds
+          .map((id) => substitutions.get(id))
+          .find(
+            (candidate) =>
+              candidate?.sourceProductId === input.productId && candidate.targetProductId === result.productId,
+          );
+        if (rule === undefined) {
           report(
             "unexplained-product-change",
             `${expectedPath}.recipe.ingredients`,
             `${result.id} changed without a rule.`,
           );
+        } else if (isObject(rule.quantity)) {
+          // The resulting amount follows the rule's ratio and target unit; no other conversion exists.
+          const { fromAmount, fromUnit, toAmount, toUnit } = rule.quantity;
+          const amount = (input.amount * toAmount) / fromAmount;
+          if (input.unit === fromUnit && (result.unit !== toUnit || result.amount !== amount)) {
+            report(
+              "quantity-mismatch",
+              `${expectedPath}.recipe.ingredients`,
+              `${result.id} must be ${amount} ${toUnit} after ${rule.id}.`,
+            );
+          }
         }
       }
       // Full revalidation: no ingredient of the resulting recipe may still reach a selected exclusion.
