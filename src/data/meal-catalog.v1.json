@@ -1,0 +1,511 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": 1,
+  "selectableExclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+  "products": [
+    {
+      "id": "cow-milk",
+      "name": "mleko krowie",
+      "aliases": ["mleko od krowy"],
+      "contains": [],
+      "profile": {
+        "description": "Mleko krowie bez dodatków; produkt źródłowy wykluczenia cow-milk.",
+        "review": {
+          "status": "pending",
+          "basis": "Autorska propozycja zamkniętego profilu katalogowego do przeglądu pod kątem czterech wykluczeń. Relacje contains opisują wyłącznie podany skład; brak relacji nie jest analizą etykiet, marek ani śladowych zanieczyszczeń. Odbiór przez właściciela produktu jeszcze nie nastąpił.",
+          "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "wheat",
+      "name": "pszenica",
+      "aliases": ["ziarno pszenicy"],
+      "contains": [],
+      "profile": {
+        "description": "Pszenica jako surowiec; produkt źródłowy wykluczenia wheat.",
+        "review": {
+          "status": "pending",
+          "basis": "Autorska propozycja zamkniętego profilu katalogowego do przeglądu pod kątem czterech wykluczeń. Relacje contains opisują wyłącznie podany skład; brak relacji nie jest analizą etykiet, marek ani śladowych zanieczyszczeń. Odbiór przez właściciela produktu jeszcze nie nastąpił.",
+          "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "walnut",
+      "name": "orzech włoski",
+      "aliases": ["orzechy włoskie"],
+      "contains": [],
+      "profile": {
+        "description": "Jadalny orzech włoski bez dodatków; produkt źródłowy wykluczenia walnut.",
+        "review": {
+          "status": "pending",
+          "basis": "Autorska propozycja zamkniętego profilu katalogowego do przeglądu pod kątem czterech wykluczeń. Relacje contains opisują wyłącznie podany skład; brak relacji nie jest analizą etykiet, marek ani śladowych zanieczyszczeń. Odbiór przez właściciela produktu jeszcze nie nastąpił.",
+          "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "pea",
+      "name": "groch",
+      "aliases": ["nasiona grochu"],
+      "contains": [],
+      "profile": {
+        "description": "Groch jako surowiec; produkt źródłowy wykluczenia pea.",
+        "review": {
+          "status": "pending",
+          "basis": "Autorska propozycja zamkniętego profilu katalogowego do przeglądu pod kątem czterech wykluczeń. Relacje contains opisują wyłącznie podany skład; brak relacji nie jest analizą etykiet, marek ani śladowych zanieczyszczeń. Odbiór przez właściciela produktu jeszcze nie nastąpił.",
+          "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "wheat-flour",
+      "name": "mąka pszenna",
+      "aliases": ["mąka z pszenicy"],
+      "contains": ["wheat"],
+      "profile": {
+        "description": "Mąka wyłącznie z pszenicy, bez domieszek innych surowców.",
+        "review": {
+          "status": "pending",
+          "basis": "Autorska propozycja zamkniętego profilu katalogowego do przeglądu pod kątem czterech wykluczeń. Relacje contains opisują wyłącznie podany skład; brak relacji nie jest analizą etykiet, marek ani śladowych zanieczyszczeń. Odbiór przez właściciela produktu jeszcze nie nastąpił.",
+          "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "hen-egg",
+      "name": "jajko kurze",
+      "aliases": ["jajka kurze"],
+      "contains": [],
+      "profile": {
+        "description": "Całe jajko kurze bez dodatków; jednostka szt. oznacza jedno jajko.",
+        "review": {
+          "status": "pending",
+          "basis": "Autorska propozycja zamkniętego profilu katalogowego do przeglądu pod kątem czterech wykluczeń. Relacje contains opisują wyłącznie podany skład; brak relacji nie jest analizą etykiet, marek ani śladowych zanieczyszczeń. Odbiór przez właściciela produktu jeszcze nie nastąpił.",
+          "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "rapeseed-oil",
+      "name": "olej rzepakowy",
+      "aliases": ["olej z rzepaku"],
+      "contains": [],
+      "profile": {
+        "description": "Olej wyłącznie z rzepaku, bez dodatków.",
+        "review": {
+          "status": "pending",
+          "basis": "Autorska propozycja zamkniętego profilu katalogowego do przeglądu pod kątem czterech wykluczeń. Relacje contains opisują wyłącznie podany skład; brak relacji nie jest analizą etykiet, marek ani śladowych zanieczyszczeń. Odbiór przez właściciela produktu jeszcze nie nastąpił.",
+          "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "water",
+      "name": "woda",
+      "aliases": [],
+      "contains": [],
+      "profile": {
+        "description": "Woda bez dodatków; składnik profili napojów.",
+        "review": {
+          "status": "pending",
+          "basis": "Autorska propozycja zamkniętego profilu katalogowego do przeglądu pod kątem czterech wykluczeń. Relacje contains opisują wyłącznie podany skład; brak relacji nie jest analizą etykiet, marek ani śladowych zanieczyszczeń. Odbiór przez właściciela produktu jeszcze nie nastąpił.",
+          "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "oat",
+      "name": "owies",
+      "aliases": ["ziarno owsa"],
+      "contains": [],
+      "profile": {
+        "description": "Owies jako surowiec; nie stanowi dodatkowego wybieralnego wykluczenia v1.",
+        "review": {
+          "status": "pending",
+          "basis": "Autorska propozycja zamkniętego profilu katalogowego do przeglądu pod kątem czterech wykluczeń. Relacje contains opisują wyłącznie podany skład; brak relacji nie jest analizą etykiet, marek ani śladowych zanieczyszczeń. Odbiór przez właściciela produktu jeszcze nie nastąpił.",
+          "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "pea-protein",
+      "name": "białko grochu",
+      "aliases": ["białko z grochu"],
+      "contains": ["pea"],
+      "profile": {
+        "description": "Białko wyłącznie z grochu, bez dodatków; zachowuje relację do grochu.",
+        "review": {
+          "status": "pending",
+          "basis": "Autorska propozycja zamkniętego profilu katalogowego do przeglądu pod kątem czterech wykluczeń. Relacje contains opisują wyłącznie podany skład; brak relacji nie jest analizą etykiet, marek ani śladowych zanieczyszczeń. Odbiór przez właściciela produktu jeszcze nie nastąpił.",
+          "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "pea-drink-unsweetened",
+      "name": "napój grochowy niesłodzony",
+      "aliases": ["niesłodzony napój grochowy"],
+      "contains": ["water", "pea-protein", "rapeseed-oil"],
+      "profile": {
+        "description": "Modelowy niesłodzony, neutralny napój z wody, białka grochu i oleju rzepakowego. Profil nie zawiera innych składników; nie oznacza dowolnego produktu handlowego o podobnej nazwie.",
+        "review": {
+          "status": "pending",
+          "basis": "Autorska propozycja zamkniętego profilu katalogowego do przeglądu pod kątem czterech wykluczeń. Relacje contains opisują wyłącznie podany skład; brak relacji nie jest analizą etykiet, marek ani śladowych zanieczyszczeń. Odbiór przez właściciela produktu jeszcze nie nastąpił.",
+          "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "oat-drink-unsweetened",
+      "name": "napój owsiany niesłodzony",
+      "aliases": ["niesłodzony napój owsiany"],
+      "contains": ["water", "oat", "rapeseed-oil"],
+      "profile": {
+        "description": "Modelowy niesłodzony, neutralny napój z wody, owsa i oleju rzepakowego. Profil nie zawiera innych składników; nie oznacza dowolnego produktu handlowego o podobnej nazwie.",
+        "review": {
+          "status": "pending",
+          "basis": "Autorska propozycja zamkniętego profilu katalogowego do przeglądu pod kątem czterech wykluczeń. Relacje contains opisują wyłącznie podany skład; brak relacji nie jest analizą etykiet, marek ani śladowych zanieczyszczeń. Odbiór przez właściciela produktu jeszcze nie nastąpił.",
+          "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+          "sources": []
+        }
+      }
+    }
+  ],
+  "substitutions": [
+    {
+      "id": "cow-milk-to-pea-drink-unsweetened-crepes-v1",
+      "sourceProductId": "cow-milk",
+      "targetProductId": "pea-drink-unsweetened",
+      "context": "crepes",
+      "appliesTo": {
+        "templateId": "crepes-basic",
+        "templateVersion": 1
+      },
+      "priority": 1,
+      "quantity": {
+        "fromAmount": 1,
+        "fromUnit": "ml",
+        "toAmount": 1,
+        "toUnit": "ml"
+      },
+      "instructionChanges": [
+        {
+          "operation": "insert-before",
+          "stepId": "mix-liquids",
+          "step": {
+            "id": "prepare-pea-drink",
+            "text": "Wstrząśnij opakowaniem składnika: {drinkName}, aby wymieszać jego zawartość. Następnie odmierz {drinkAmount} {drinkUnit} tego napoju do ciasta.",
+            "ingredientIds": ["milk"],
+            "parameters": [
+              {
+                "name": "drinkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "drinkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "drinkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              }
+            ]
+          }
+        },
+        {
+          "operation": "replace",
+          "stepId": "mix-liquids",
+          "step": {
+            "id": "mix-liquids",
+            "text": "Do miski wlej odmierzone {drinkAmount} {drinkUnit} składnika: {drinkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "drinkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "drinkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "drinkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "cow-milk-to-oat-drink-unsweetened-crepes-v1",
+      "sourceProductId": "cow-milk",
+      "targetProductId": "oat-drink-unsweetened",
+      "context": "crepes",
+      "appliesTo": {
+        "templateId": "crepes-basic",
+        "templateVersion": 1
+      },
+      "priority": 2,
+      "quantity": {
+        "fromAmount": 1,
+        "fromUnit": "ml",
+        "toAmount": 1,
+        "toUnit": "ml"
+      },
+      "instructionChanges": [
+        {
+          "operation": "insert-before",
+          "stepId": "mix-liquids",
+          "step": {
+            "id": "prepare-oat-drink",
+            "text": "Wstrząśnij opakowaniem składnika: {drinkName}, aby wymieszać jego zawartość. Następnie odmierz {drinkAmount} {drinkUnit} tego napoju do ciasta.",
+            "ingredientIds": ["milk"],
+            "parameters": [
+              {
+                "name": "drinkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "drinkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "drinkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              }
+            ]
+          }
+        },
+        {
+          "operation": "replace",
+          "stepId": "mix-liquids",
+          "step": {
+            "id": "mix-liquids",
+            "text": "Do miski wlej odmierzone {drinkAmount} {drinkUnit} składnika: {drinkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+            "ingredientIds": ["milk", "eggs"],
+            "parameters": [
+              {
+                "name": "drinkName",
+                "ingredientId": "milk",
+                "field": "productName"
+              },
+              {
+                "name": "drinkAmount",
+                "ingredientId": "milk",
+                "field": "amount"
+              },
+              {
+                "name": "drinkUnit",
+                "ingredientId": "milk",
+                "field": "unit"
+              },
+              {
+                "name": "eggsAmount",
+                "ingredientId": "eggs",
+                "field": "amount"
+              },
+              {
+                "name": "eggsUnit",
+                "ingredientId": "eggs",
+                "field": "unit"
+              },
+              {
+                "name": "eggsName",
+                "ingredientId": "eggs",
+                "field": "productName"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "referenceRecipe": {
+    "id": "crepes-basic-v1",
+    "context": "crepes",
+    "templateId": "crepes-basic",
+    "templateVersion": 1,
+    "ingredients": [
+      {
+        "id": "flour",
+        "productId": "wheat-flour",
+        "amount": 120,
+        "unit": "g"
+      },
+      {
+        "id": "milk",
+        "productId": "cow-milk",
+        "amount": 360,
+        "unit": "ml"
+      },
+      {
+        "id": "eggs",
+        "productId": "hen-egg",
+        "amount": 2,
+        "unit": "szt."
+      },
+      {
+        "id": "oil",
+        "productId": "rapeseed-oil",
+        "amount": 15,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      {
+        "id": "mix-liquids",
+        "text": "Odmierz {milkAmount} {milkUnit} składnika: {milkName}. Dodaj {eggsAmount} {eggsUnit} składnika: {eggsName}. Wymieszaj trzepaczką do połączenia.",
+        "ingredientIds": ["milk", "eggs"],
+        "parameters": [
+          {
+            "name": "milkAmount",
+            "ingredientId": "milk",
+            "field": "amount"
+          },
+          {
+            "name": "milkUnit",
+            "ingredientId": "milk",
+            "field": "unit"
+          },
+          {
+            "name": "milkName",
+            "ingredientId": "milk",
+            "field": "productName"
+          },
+          {
+            "name": "eggsAmount",
+            "ingredientId": "eggs",
+            "field": "amount"
+          },
+          {
+            "name": "eggsUnit",
+            "ingredientId": "eggs",
+            "field": "unit"
+          },
+          {
+            "name": "eggsName",
+            "ingredientId": "eggs",
+            "field": "productName"
+          }
+        ]
+      },
+      {
+        "id": "add-flour",
+        "text": "Dodawaj stopniowo {flourAmount} {flourUnit} składnika: {flourName}, mieszając do uzyskania gładkiego ciasta bez grudek.",
+        "ingredientIds": ["flour"],
+        "parameters": [
+          {
+            "name": "flourAmount",
+            "ingredientId": "flour",
+            "field": "amount"
+          },
+          {
+            "name": "flourUnit",
+            "ingredientId": "flour",
+            "field": "unit"
+          },
+          {
+            "name": "flourName",
+            "ingredientId": "flour",
+            "field": "productName"
+          }
+        ]
+      },
+      {
+        "id": "rest-batter",
+        "text": "Odstaw wymieszane ciasto na 20 minut, a następnie ponownie zamieszaj.",
+        "ingredientIds": ["flour", "milk", "eggs"],
+        "parameters": []
+      },
+      {
+        "id": "prepare-pan",
+        "text": "Rozgrzej patelnię na średnim ogniu. Odmierz {oilAmount} {oilUnit} składnika: {oilName}, do cienkiego natłuszczania patelni przed kolejnymi naleśnikami; nie dodawaj tej porcji do ciasta.",
+        "ingredientIds": ["oil"],
+        "parameters": [
+          {
+            "name": "oilAmount",
+            "ingredientId": "oil",
+            "field": "amount"
+          },
+          {
+            "name": "oilUnit",
+            "ingredientId": "oil",
+            "field": "unit"
+          },
+          {
+            "name": "oilName",
+            "ingredientId": "oil",
+            "field": "productName"
+          }
+        ]
+      },
+      {
+        "id": "cook-crepes",
+        "text": "Na cienko natłuszczoną patelnię wylewaj niewielkie porcje ciasta i rozprowadzaj je cienką warstwą. Smaż do ścięcia wierzchu i lekkiego zrumienienia spodu, obróć i dosmaż drugą stronę. Powtarzaj z pozostałym ciastem, natłuszczając patelnię w razie potrzeby odmierzoną porcją oleju.",
+        "ingredientIds": ["flour", "milk", "eggs", "oil"],
+        "parameters": []
+      },
+      {
+        "id": "serve-crepes",
+        "text": "Podawaj gotowe naleśniki bez nadzienia.",
+        "ingredientIds": ["flour", "milk", "eggs", "oil"],
+        "parameters": []
+      }
+    ]
+  },
+  "referenceRecipeReview": {
+    "status": "pending",
+    "basis": "Metryczna propozycja agenta inspirowana przepisem University of Maine, bez deklaracji liczby porcji. Kolejność napój grochowy → owsiany i proporcja 1 ml → 1 ml stanowią propozycję danych ograniczoną do tego szablonu naleśników, a nie ranking zdrowotny ani wynik próby kuchennej. Źródło King Arthur Baking jest pomocniczym odniesieniem dla niesłodzonych napojów roślinnych. Przepis i reguły oczekują na odbiór właściciela.",
+    "exclusionIds": ["cow-milk", "wheat", "walnut", "pea"],
+    "sources": [
+      {
+        "title": "University of Maine — Crêpes",
+        "url": "https://extension.umaine.edu/food-health/recipes/crepes/",
+        "accessedOn": "2026-10-18"
+      },
+      {
+        "title": "King Arthur Baking — How to bake dairy-free",
+        "url": "https://www.kingarthurbaking.com/blog/2018/05/10/how-to-bake-dairy-free",
+        "accessedOn": "2026-10-18"
+      }
+    ]
+  }
+}
