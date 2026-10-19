@@ -1,8 +1,17 @@
 # build output
 dist/
+build/
+*.tsbuildinfo
 
 # generated types
 .astro/
+
+# caches and test output
+.cache/
+.eslintcache
+.prettiercache
+coverage/
+*.log
 
 # dependencies
 node_modules/

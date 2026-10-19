@@ -1,0 +1,19 @@
+Chcę zbudować MealAdapt — webową aplikację do planowania posiłków dla osób, które mają określone alergie pokarmowe lub inne produkty wykluczone z diety.
+
+Użytkownik definiuje swoje alergie i produkty, których chce unikać. Następnie aplikacja proponuje posiłki dopasowane do tych ograniczeń. Jeśli wygenerowany przepis zawiera niedozwolony składnik, system wykrywa konflikt i próbuje zastąpić ten składnik wcześniej zdefiniowanym, dozwolonym zamiennikiem. Po zmianie cały posiłek jest ponownie sprawdzany. Jeśli nie można znaleźć odpowiedniego zamiennika, posiłek zostaje odrzucony i system proponuje inny.
+
+AI ma służyć głównie do generowania propozycji posiłków i dostosowywania przepisów. Sprawdzanie składników względem ograniczeń użytkownika oraz decyzja, czy posiłek może zostać zaakceptowany, powinny opierać się na kontrolowanej logice aplikacji, a nie wyłącznie na odpowiedzi modelu AI.
+
+Najważniejszy przepływ MVP to:
+
+ustawienie produktów wykluczonych → wygenerowanie pojedynczego posiłku → sprawdzenie składników → ewentualna zamiana niedozwolonego składnika → ponowna walidacja → zaakceptowanie lub odrzucenie posiłku przez użytkownika.
+
+W pierwszej wersji chcę ograniczyć projekt do pojedynczych posiłków, zamiast od razu budować pełny tygodniowy jadłospis. MVP nie będzie obejmować diagnozowania alergii, porad medycznych, diet leczniczych, suplementacji, integracji ze sklepami, automatycznych zakupów ani zaawansowanego liczenia kalorii i makroskładników. Użytkownik sam podaje swoje alergie i produkty wykluczone.
+
+Moje doświadczenie programistyczne: 15 lat.
+
+Moje doświadczenie z agentami AI i kończeniem projektów z ich pomocą: kilka miesiecy.
+
+Na projekt mogę przeznaczyć około 8h godzin tygodniowo.
+
+Chciałbym oddać projekt w 4 listopada.

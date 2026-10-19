@@ -1,0 +1,27 @@
+{
+  "url": "https://meal-adapt-staging.appsd.workers.dev",
+  "verifiedAt": "2026-10-09T21:58:49.615Z",
+  "smokeAfterRollbackExitCode": 0,
+  "restoredHomeHttpStatus": 200,
+  "tailEvents": [],
+  "tailErrors": null,
+  "supabaseAuthSettings": {
+    "emailEnabled": true,
+    "mailerAutoconfirm": true,
+    "signupDisabled": false
+  },
+  "smokeBeforeRollbackExitCode": 0,
+  "baselineVersionId": "c96fb814-b3ec-4d8f-ab0d-a9a79d192be8",
+  "applicationVersionId": "697c2b61-8d99-4114-b865-18adb9b003fc",
+  "activeDeploymentId": "be9c8208-e570-4771-810d-cfa2e2782cee",
+  "rollback": {
+    "cliExitCode": 0,
+    "httpStatus": 503,
+    "maintenanceTextMatches": true,
+    "applicationRestored": true
+  },
+  "telemetryStatus": "Tail session created and closed successfully, but no events received. GraphQL returned an empty metrics array; CPU and runtime logs not verified.",
+  "browserStatus": "No browsers available through computer-use tools; desktop and mobile form interaction not verified.",
+  "supabaseSiteUrlStatus": "Not independently verified.",
+  "productionStatus": "Not deployed or modified during staging verification."
+}
