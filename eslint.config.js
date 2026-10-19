@@ -71,7 +71,7 @@ const astroConfig = defineConfig({
 });
 
 const scriptsConfig = defineConfig({
-  files: ["scripts/**/*.mjs", ".agents/**/scripts/**/*.mjs"],
+  files: ["scripts/**/*.mjs", ".claude/**/scripts/**/*.mjs"],
   extends: [tseslint.configs.disableTypeChecked],
   languageOptions: {
     globals: {
