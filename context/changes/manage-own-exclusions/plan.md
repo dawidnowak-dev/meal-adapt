@@ -491,11 +491,11 @@ Nowe źródła unieważniają zapisany manifest stagingu. Przed publikacją trze
 
 #### Automated
 
-- [x] 4.1 Kontrola typów, lint i build przechodzą: `npx --no-install astro check`, `npm run lint` i `npm run build`.
-- [x] 4.2 Smoke przechodzi bez zmian oczekiwań auth: `BASE_URL=http://localhost:4321 npm run smoke`.
-- [x] 4.3 W UI nie zostały angielskie teksty startera: `grep -rnE 'Sign (in|out|up)|Not signed in|is required|Welcome,|Create account|Forgot|Authentication Ready|Modern Stack|Dashboard|"Email"|"Password"|Your password' src/components src/pages src/layouts` nie zwraca wyników.
+- [x] 4.1 Kontrola typów, lint i build przechodzą: `npx --no-install astro check`, `npm run lint` i `npm run build`. — 92f4e98
+- [x] 4.2 Smoke przechodzi bez zmian oczekiwań auth: `BASE_URL=http://localhost:4321 npm run smoke`. — 92f4e98
+- [x] 4.3 W UI nie zostały angielskie teksty startera: `grep -rnE 'Sign (in|out|up)|Not signed in|is required|Welcome,|Create account|Forgot|Authentication Ready|Modern Stack|Dashboard|"Email"|"Password"|Your password' src/components src/pages src/layouts` nie zwraca wyników. — 92f4e98
 
 #### Manual
 
-- [x] 4.4 Przejście przez stronę główną, rejestrację, potwierdzenie e-maila, logowanie, dashboard, wykluczenia i wylogowanie na telefonie i komputerze — wszystkie teksty po polsku.
-- [x] 4.5 Lokalnie (potwierdzenia e-mail wyłączone) błędne hasło i rejestracja istniejącego adresu pokazują polskie komunikaty.
+- [x] 4.4 Przejście przez stronę główną, rejestrację, potwierdzenie e-maila, logowanie, dashboard, wykluczenia i wylogowanie na telefonie i komputerze — wszystkie teksty po polsku. — 92f4e98
+- [x] 4.5 Lokalnie (potwierdzenia e-mail wyłączone) błędne hasło i rejestracja istniejącego adresu pokazują polskie komunikaty. — 92f4e98
