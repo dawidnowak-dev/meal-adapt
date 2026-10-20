@@ -1,4 +1,4 @@
-// Smoke test: proves the built app, the Cloudflare adapter, the Supabase auth flow and the exclusions API (two accounts) still work together.
+// Smoke test: proves the built app, the Cloudflare adapter, the Supabase auth flow and the exclusions API (two accounts) still work together, plus the protected exclusions page.
 // Zero dependencies on purpose. Run against a live server: BASE_URL=http://localhost:4321 node scripts/smoke.mjs
 
 const BASE_URL = process.env.BASE_URL ?? "http://localhost:4321";
@@ -97,6 +97,12 @@ const steps = [
     () => request("/api/auth/signup", { method: "POST", form: { email: emailB, password }, cookies: jarB }),
     { status: 302, location: "/auth/confirm-email" },
   ],
+  [
+    "exclusions page redirects anonymous user",
+    () => request("/exclusions", { cookies: anonymousJar }),
+    { status: 302, location: "/auth/signin" },
+  ],
+  ["exclusions page renders for signed-in A", () => request("/exclusions"), { status: 200 }],
   [
     "A adds cow-milk",
     () => request("/api/exclusions", { method: "POST", json: { productId: "cow-milk" } }),

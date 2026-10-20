@@ -464,28 +464,28 @@ Nowe źródła unieważniają zapisany manifest stagingu. Przed publikacją trze
 
 #### Automated
 
-- [x] 2.1 Kontrola typów i lint przechodzą: `npx --no-install astro sync`, `npx --no-install astro check` i `npm run lint`.
-- [x] 2.2 Build produkcyjny przechodzi: `npm run build`.
-- [x] 2.3 Smoke z dwoma kontami przechodzi przeciw `npm run preview` z lokalnym Supabase: `BASE_URL=http://localhost:4321 npm run smoke`.
-- [x] 2.4 Testy RLS nadal przechodzą: `npx supabase test db`.
+- [x] 2.1 Kontrola typów i lint przechodzą: `npx --no-install astro sync`, `npx --no-install astro check` i `npm run lint`. — b0bee6a
+- [x] 2.2 Build produkcyjny przechodzi: `npm run build`. — b0bee6a
+- [x] 2.3 Smoke z dwoma kontami przechodzi przeciw `npm run preview` z lokalnym Supabase: `BASE_URL=http://localhost:4321 npm run smoke`. — b0bee6a
+- [x] 2.4 Testy RLS nadal przechodzą: `npx supabase test db`. — b0bee6a
 
 #### Manual
 
-- [x] 2.5 Wpis oceny zgłoszeń zależności w `deploy-plan.md` jest przejrzany i wniosek zaakceptowany.
+- [x] 2.5 Wpis oceny zgłoszeń zależności w `deploy-plan.md` jest przejrzany i wniosek zaakceptowany. — b0bee6a
 
 ### Phase 3: Strona wykluczeń
 
 #### Automated
 
-- [ ] 3.1 Kontrola typów, lint i build przechodzą: `npx --no-install astro check`, `npm run lint` i `npm run build`.
-- [ ] 3.2 Smoke przechodzi przeciw `npm run preview` z lokalnym Supabase, w tym ochrona `/exclusions`: `BASE_URL=http://localhost:4321 npm run smoke`.
+- [x] 3.1 Kontrola typów, lint i build przechodzą: `npx --no-install astro check`, `npm run lint` i `npm run build`.
+- [x] 3.2 Smoke przechodzi przeciw `npm run preview` z lokalnym Supabase, w tym ochrona `/exclusions`: `BASE_URL=http://localhost:4321 npm run smoke`.
 
 #### Manual
 
-- [ ] 3.3 Na telefonie (lub DevTools ~375 px) i na komputerze można dodać, usunąć i ponownie dodać wykluczenie; po odświeżeniu stan się zgadza.
-- [ ] 3.4 Inna przeglądarka zalogowana na to samo konto widzi te same wykluczenia po odświeżeniu, a drugie konto ich nie widzi.
-- [ ] 3.5 Wyszukiwanie: „mle” i „mleko” pokazują „mleko krowie” z komunikatem; „Mleko  Krowie” bez komunikatu; „owies” i „jajka” dają pustą listę z komunikatem; nie da się zapisać wpisanego tekstu.
-- [ ] 3.6 Przy dławieniu sieci (Slow 3G) przycisk pokazuje stan zapisu; w trybie offline pojawia się czytelny błąd, a lista się nie zmienia.
+- [x] 3.3 Na telefonie (lub DevTools ~375 px) i na komputerze można dodać, usunąć i ponownie dodać wykluczenie; po odświeżeniu stan się zgadza.
+- [x] 3.4 Inna przeglądarka zalogowana na to samo konto widzi te same wykluczenia po odświeżeniu, a drugie konto ich nie widzi.
+- [x] 3.5 Wyszukiwanie: „mle” i „mleko” pokazują „mleko krowie” z komunikatem; „Mleko  Krowie” bez komunikatu; „owies” i „jajka” dają pustą listę z komunikatem; nie da się zapisać wpisanego tekstu.
+- [x] 3.6 Przy dławieniu sieci (Slow 3G) przycisk pokazuje stan zapisu; w trybie offline pojawia się czytelny błąd, a lista się nie zmienia.
 
 ### Phase 4: Polski interfejs aplikacji
 
