@@ -451,27 +451,27 @@ Nowe źródła unieważniają zapisany manifest stagingu. Przed publikacją trze
 
 #### Automated
 
-- [x] 1.1 Lokalny Supabase działa, a aplikacja na niego wskazuje: `npx supabase status` pokazuje uruchomione usługi, a `SUPABASE_URL` w `.env` i `.dev.vars` wskazuje `127.0.0.1`.
-- [x] 1.2 Migracja stosuje się na czystej lokalnej bazie: `npx supabase db reset`.
-- [x] 1.3 Testy RLS przechodzą: `npx supabase test db`.
-- [x] 1.4 Lint przechodzi: `npm run lint`.
+- [x] 1.1 Lokalny Supabase działa, a aplikacja na niego wskazuje: `npx supabase status` pokazuje uruchomione usługi, a `SUPABASE_URL` w `.env` i `.dev.vars` wskazuje `127.0.0.1`. — a852e6f
+- [x] 1.2 Migracja stosuje się na czystej lokalnej bazie: `npx supabase db reset`. — a852e6f
+- [x] 1.3 Testy RLS przechodzą: `npx supabase test db`. — a852e6f
+- [x] 1.4 Lint przechodzi: `npm run lint`. — a852e6f
 
 #### Manual
 
-- [x] 1.5 W lokalnym Studio albo przez `psql` widać tabelę `user_exclusions` z włączonym RLS, sześcioma politykami (3× authenticated, 3× anon) i bez polityki update.
+- [x] 1.5 W lokalnym Studio albo przez `psql` widać tabelę `user_exclusions` z włączonym RLS, sześcioma politykami (3× authenticated, 3× anon) i bez polityki update. — a852e6f
 
 ### Phase 2: Serwis i API wykluczeń
 
 #### Automated
 
-- [ ] 2.1 Kontrola typów i lint przechodzą: `npx --no-install astro sync`, `npx --no-install astro check` i `npm run lint`.
-- [ ] 2.2 Build produkcyjny przechodzi: `npm run build`.
-- [ ] 2.3 Smoke z dwoma kontami przechodzi przeciw `npm run preview` z lokalnym Supabase: `BASE_URL=http://localhost:4321 npm run smoke`.
-- [ ] 2.4 Testy RLS nadal przechodzą: `npx supabase test db`.
+- [x] 2.1 Kontrola typów i lint przechodzą: `npx --no-install astro sync`, `npx --no-install astro check` i `npm run lint`.
+- [x] 2.2 Build produkcyjny przechodzi: `npm run build`.
+- [x] 2.3 Smoke z dwoma kontami przechodzi przeciw `npm run preview` z lokalnym Supabase: `BASE_URL=http://localhost:4321 npm run smoke`.
+- [x] 2.4 Testy RLS nadal przechodzą: `npx supabase test db`.
 
 #### Manual
 
-- [ ] 2.5 Wpis oceny zgłoszeń zależności w `deploy-plan.md` jest przejrzany i wniosek zaakceptowany.
+- [x] 2.5 Wpis oceny zgłoszeń zależności w `deploy-plan.md` jest przejrzany i wniosek zaakceptowany.
 
 ### Phase 3: Strona wykluczeń
 
