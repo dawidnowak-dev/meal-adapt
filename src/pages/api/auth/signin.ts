@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { AUTH_NOT_CONFIGURED_MESSAGE, authErrorMessage } from "@/lib/auth-errors";
 import { createClient } from "@/lib/supabase";
 
 export const POST: APIRoute = async (context) => {
@@ -8,12 +9,12 @@ export const POST: APIRoute = async (context) => {
 
   const supabase = createClient(context.request.headers, context.cookies);
   if (!supabase) {
-    return context.redirect(`/auth/signin?error=${encodeURIComponent("Supabase is not configured")}`);
+    return context.redirect(`/auth/signin?error=${encodeURIComponent(AUTH_NOT_CONFIGURED_MESSAGE)}`);
   }
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
-    return context.redirect(`/auth/signin?error=${encodeURIComponent(error.message)}`);
+    return context.redirect(`/auth/signin?error=${encodeURIComponent(authErrorMessage(error, "signin"))}`);
   }
 
   return context.redirect("/");

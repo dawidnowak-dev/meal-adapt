@@ -477,25 +477,25 @@ Nowe źródła unieważniają zapisany manifest stagingu. Przed publikacją trze
 
 #### Automated
 
-- [x] 3.1 Kontrola typów, lint i build przechodzą: `npx --no-install astro check`, `npm run lint` i `npm run build`.
-- [x] 3.2 Smoke przechodzi przeciw `npm run preview` z lokalnym Supabase, w tym ochrona `/exclusions`: `BASE_URL=http://localhost:4321 npm run smoke`.
+- [x] 3.1 Kontrola typów, lint i build przechodzą: `npx --no-install astro check`, `npm run lint` i `npm run build`. — 478b220
+- [x] 3.2 Smoke przechodzi przeciw `npm run preview` z lokalnym Supabase, w tym ochrona `/exclusions`: `BASE_URL=http://localhost:4321 npm run smoke`. — 478b220
 
 #### Manual
 
-- [x] 3.3 Na telefonie (lub DevTools ~375 px) i na komputerze można dodać, usunąć i ponownie dodać wykluczenie; po odświeżeniu stan się zgadza.
-- [x] 3.4 Inna przeglądarka zalogowana na to samo konto widzi te same wykluczenia po odświeżeniu, a drugie konto ich nie widzi.
-- [x] 3.5 Wyszukiwanie: „mle” i „mleko” pokazują „mleko krowie” z komunikatem; „Mleko  Krowie” bez komunikatu; „owies” i „jajka” dają pustą listę z komunikatem; nie da się zapisać wpisanego tekstu.
-- [x] 3.6 Przy dławieniu sieci (Slow 3G) przycisk pokazuje stan zapisu; w trybie offline pojawia się czytelny błąd, a lista się nie zmienia.
+- [x] 3.3 Na telefonie (lub DevTools ~375 px) i na komputerze można dodać, usunąć i ponownie dodać wykluczenie; po odświeżeniu stan się zgadza. — 478b220
+- [x] 3.4 Inna przeglądarka zalogowana na to samo konto widzi te same wykluczenia po odświeżeniu, a drugie konto ich nie widzi. — 478b220
+- [x] 3.5 Wyszukiwanie: „mle” i „mleko” pokazują „mleko krowie” z komunikatem; „Mleko  Krowie” bez komunikatu; „owies” i „jajka” dają pustą listę z komunikatem; nie da się zapisać wpisanego tekstu. — 478b220
+- [x] 3.6 Przy dławieniu sieci (Slow 3G) przycisk pokazuje stan zapisu; w trybie offline pojawia się czytelny błąd, a lista się nie zmienia. — 478b220
 
 ### Phase 4: Polski interfejs aplikacji
 
 #### Automated
 
-- [ ] 4.1 Kontrola typów, lint i build przechodzą: `npx --no-install astro check`, `npm run lint` i `npm run build`.
-- [ ] 4.2 Smoke przechodzi bez zmian oczekiwań auth: `BASE_URL=http://localhost:4321 npm run smoke`.
-- [ ] 4.3 W UI nie zostały angielskie teksty startera: `grep -rnE 'Sign (in|out|up)|Not signed in|is required|Welcome,|Create account|Forgot|Authentication Ready|Modern Stack|Dashboard|"Email"|"Password"|Your password' src/components src/pages src/layouts` nie zwraca wyników.
+- [x] 4.1 Kontrola typów, lint i build przechodzą: `npx --no-install astro check`, `npm run lint` i `npm run build`.
+- [x] 4.2 Smoke przechodzi bez zmian oczekiwań auth: `BASE_URL=http://localhost:4321 npm run smoke`.
+- [x] 4.3 W UI nie zostały angielskie teksty startera: `grep -rnE 'Sign (in|out|up)|Not signed in|is required|Welcome,|Create account|Forgot|Authentication Ready|Modern Stack|Dashboard|"Email"|"Password"|Your password' src/components src/pages src/layouts` nie zwraca wyników.
 
 #### Manual
 
-- [ ] 4.4 Przejście przez stronę główną, rejestrację, potwierdzenie e-maila, logowanie, dashboard, wykluczenia i wylogowanie na telefonie i komputerze — wszystkie teksty po polsku.
-- [ ] 4.5 Lokalnie (potwierdzenia e-mail wyłączone) błędne hasło i rejestracja istniejącego adresu pokazują polskie komunikaty.
+- [x] 4.4 Przejście przez stronę główną, rejestrację, potwierdzenie e-maila, logowanie, dashboard, wykluczenia i wylogowanie na telefonie i komputerze — wszystkie teksty po polsku.
+- [x] 4.5 Lokalnie (potwierdzenia e-mail wyłączone) błędne hasło i rejestracja istniejącego adresu pokazują polskie komunikaty.
