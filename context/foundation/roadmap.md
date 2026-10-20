@@ -44,7 +44,7 @@ Osoba ze znanymi alergiami pokarmowymi lub świadomymi wykluczeniami żywieniowy
 | ID | Change ID | Outcome (user can …) | Prerequisites | PRD refs | Status |
 | --- | --- | --- | --- | --- | --- |
 | F-01 | verified-first-meal-catalog | (foundation) dostępny jest zatwierdzony katalog i przykłady odbioru pierwszego posiłku | — | FR-003, FR-005, US-01, Business Logic | done |
-| S-01 | manage-own-exclusions | użytkownik może przeglądać, dodawać i usuwać własne wykluczenia | F-01 | FR-003, US-01, Access Control, Non-Functional Requirements | proposed |
+| S-01 | manage-own-exclusions | użytkownik może przeglądać, dodawać i usuwać własne wykluczenia | F-01 | FR-003, US-01, Access Control, Non-Functional Requirements | done |
 | S-02 | first-validated-meal | użytkownik może otrzymać sprawdzony posiłek z dozwoloną zamianą | F-01, S-01 | FR-004, FR-005, US-01, Business Logic, Non-Functional Requirements | blocked |
 | S-03 | save-accepted-meal | użytkownik może zaakceptować propozycję i zapisać ją bez duplikatu | S-02 | FR-007, US-01, Access Control, Non-Functional Requirements | proposed |
 | S-04 | reopen-saved-meal | użytkownik może wrócić do przepisu i zobaczyć konflikt z aktualnymi wykluczeniami | S-03 | FR-008, US-01, Access Control, Business Logic, Non-Functional Requirements | proposed |
@@ -106,7 +106,7 @@ S-01 wprowadza przechowywanie i izolację wykluczeń, S-02 integruje generowanie
 - **Blockers:** —
 - **Unknowns:** —
 - **Risk:** To pierwsze zapisane dane użytkownika, więc ich izolacja między kontami musi być sprawdzona wraz z działającym wyborem wykluczeń.
-- **Status:** proposed
+- **Status:** done
 
 ### S-02: Pierwszy sprawdzony posiłek z dozwoloną zamianą
 
@@ -209,3 +209,4 @@ Owner: użytkownik. Block: —; nie blokuje planowania F-01 ani funkcji dla usta
 ## Done
 
 - **F-01: (foundation) twórca przygotował i sprawdził minimalny katalog dla wykluczeń mleka krowiego, pszenicy, orzechów włoskich i grochu oraz wszystkich składników scenariusza US-01, z jawnymi powiązaniami, kolejnością zamienników, proporcjami i zmianami instrukcji potrzebnymi do pierwszej dozwolonej zamiany.** — Archived 2026-10-20 → `context/archive/2026-10-18-verified-first-meal-catalog/`. Lesson: —.
+- **S-01: Użytkownik może przeglądać własne wykluczenia, dodawać produkty z ustalonego katalogu i usuwać je także po pierwszym ustawieniu, wracać do nich na innym urządzeniu oraz otrzymać jawną informację, że brakujący produkt nie jest obsługiwany i nie zostanie uwzględniony.** — Archived 2026-10-20 → `context/archive/2026-10-20-manage-own-exclusions/`. Lesson: —.
