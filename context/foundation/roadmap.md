@@ -3,7 +3,7 @@ project: MealAdapt
 version: 1
 status: draft
 created: 2026-10-18
-updated: 2026-10-18
+updated: 2026-10-20
 prd_version: 1
 main_goal: speed
 top_blocker: time
@@ -43,7 +43,7 @@ Osoba ze znanymi alergiami pokarmowymi lub świadomymi wykluczeniami żywieniowy
 
 | ID | Change ID | Outcome (user can …) | Prerequisites | PRD refs | Status |
 | --- | --- | --- | --- | --- | --- |
-| F-01 | verified-first-meal-catalog | (foundation) dostępny jest zatwierdzony katalog i przykłady odbioru pierwszego posiłku | — | FR-003, FR-005, US-01, Business Logic | in-progress |
+| F-01 | verified-first-meal-catalog | (foundation) dostępny jest zatwierdzony katalog i przykłady odbioru pierwszego posiłku | — | FR-003, FR-005, US-01, Business Logic | done |
 | S-01 | manage-own-exclusions | użytkownik może przeglądać, dodawać i usuwać własne wykluczenia | F-01 | FR-003, US-01, Access Control, Non-Functional Requirements | proposed |
 | S-02 | first-validated-meal | użytkownik może otrzymać sprawdzony posiłek z dozwoloną zamianą | F-01, S-01 | FR-004, FR-005, US-01, Business Logic, Non-Functional Requirements | blocked |
 | S-03 | save-accepted-meal | użytkownik może zaakceptować propozycję i zapisać ją bez duplikatu | S-02 | FR-007, US-01, Access Control, Non-Functional Requirements | proposed |
@@ -88,7 +88,7 @@ Nie stwierdzono sekcji Forward: technical-roadmap w notatkach. Dokumenty lessons
 - **Blockers:** —
 - **Unknowns:** —
 - **Risk:** Bez sprawdzonych danych nie da się ocenić zgodności pierwszego posiłku; fundament obejmuje zakres i przykłady do tego przepływu, a S-01, S-02 i S-04 dopiero udostępnią oraz wykonają te reguły.
-- **Status:** in-progress
+- **Status:** done
 
 ## Slices
 
@@ -208,3 +208,4 @@ Owner: użytkownik. Block: —; nie blokuje planowania F-01 ani funkcji dla usta
 
 ## Done
 
+- **F-01: (foundation) twórca przygotował i sprawdził minimalny katalog dla wykluczeń mleka krowiego, pszenicy, orzechów włoskich i grochu oraz wszystkich składników scenariusza US-01, z jawnymi powiązaniami, kolejnością zamienników, proporcjami i zmianami instrukcji potrzebnymi do pierwszej dozwolonej zamiany.** — Archived 2026-10-20 → `context/archive/2026-10-18-verified-first-meal-catalog/`. Lesson: —.
