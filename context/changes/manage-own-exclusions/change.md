@@ -1,7 +1,7 @@
 ---
 change_id: manage-own-exclusions
 title: Własne wykluczenia z obsługiwanego katalogu (S-01)
-status: implemented
+status: impl_reviewed
 created: 2026-10-20
 updated: 2026-10-20
 archived_at: null

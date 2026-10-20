@@ -1,8 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { authErrorMessage } from "@/lib/auth-errors";
 import SignUpForm from "@/components/auth/SignUpForm";
 
-const error = Astro.url.searchParams.get("error");
+const error = authErrorMessage(Astro.url.searchParams.get("error"), "signup");
 ---
 
 <Layout title="Rejestracja">

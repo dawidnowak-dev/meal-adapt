@@ -19,6 +19,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
     if (!context.locals.user) {
       return context.redirect("/auth/signin");
     }
+    // Pages with the user's data must not stay in the browser cache after sign-out.
+    const response = await next();
+    response.headers.set("Cache-Control", "private, no-store");
+    return response;
   }
 
   return next();

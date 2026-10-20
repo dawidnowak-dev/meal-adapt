@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { getSelectableExclusions } from "@/lib/catalog/selectable-exclusions";
+import { findSelectableExclusion } from "@/lib/catalog/selectable-exclusions";
 import type { ExclusionDTO } from "@/types";
 
 const TABLE = "user_exclusions";
@@ -21,7 +21,7 @@ export class ExclusionServiceError extends Error {
 }
 
 function toDTO(row: ExclusionRow): ExclusionDTO {
-  const selectable = getSelectableExclusions().find((item) => item.id === row.product_id);
+  const selectable = findSelectableExclusion(row.product_id);
   return {
     productId: row.product_id,
     name: selectable?.name ?? row.product_id,
@@ -49,26 +49,30 @@ export async function addExclusion(
   userId: string,
   productId: string,
 ): Promise<{ exclusion: ExclusionDTO; created: boolean }> {
-  // ignoreDuplicates issues INSERT ... ON CONFLICT DO NOTHING (no UPDATE; the table has no update policy).
-  const { data: inserted, error: insertError } = await supabase
-    .from(TABLE)
-    .upsert({ user_id: userId, product_id: productId }, { onConflict: "user_id,product_id", ignoreDuplicates: true })
-    .select(COLUMNS)
-    .overrideTypes<ExclusionRow[], { merge: false }>();
-  if (insertError) throw new ExclusionServiceError("insert", insertError);
+  // A concurrent delete (e.g. another tab) can remove the duplicate between the insert and the read; retry once.
+  for (let attempt = 0; attempt < 2; attempt++) {
+    // ignoreDuplicates issues INSERT ... ON CONFLICT DO NOTHING (no UPDATE; the table has no update policy).
+    const { data: inserted, error: insertError } = await supabase
+      .from(TABLE)
+      .upsert({ user_id: userId, product_id: productId }, { onConflict: "user_id,product_id", ignoreDuplicates: true })
+      .select(COLUMNS)
+      .overrideTypes<ExclusionRow[], { merge: false }>();
+    if (insertError) throw new ExclusionServiceError("insert", insertError);
 
-  const createdRow = inserted.at(0);
-  if (createdRow) return { exclusion: toDTO(createdRow), created: true };
+    const createdRow = inserted.at(0);
+    if (createdRow) return { exclusion: toDTO(createdRow), created: true };
 
-  const { data: existing, error: selectError } = await supabase
-    .from(TABLE)
-    .select(COLUMNS)
-    .eq("user_id", userId)
-    .eq("product_id", productId)
-    .single()
-    .overrideTypes<ExclusionRow, { merge: false }>();
-  if (selectError) throw new ExclusionServiceError("select existing", selectError);
-  return { exclusion: toDTO(existing), created: false };
+    const { data: existing, error: selectError } = await supabase
+      .from(TABLE)
+      .select(COLUMNS)
+      .eq("user_id", userId)
+      .eq("product_id", productId)
+      .maybeSingle()
+      .overrideTypes<ExclusionRow | null, { merge: false }>();
+    if (selectError) throw new ExclusionServiceError("select existing", selectError);
+    if (existing) return { exclusion: toDTO(existing), created: false };
+  }
+  throw new ExclusionServiceError("insert", { message: "row removed concurrently on every attempt" });
 }
 
 /** Idempotent: removing a missing row (or another account's row) is not an error. */

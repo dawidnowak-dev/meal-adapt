@@ -18,13 +18,18 @@ const selectableExclusions: readonly SelectableExclusion[] = catalog.selectableE
   return { id: product.id, name: product.name, aliases: [...product.aliases] };
 });
 
-const selectableIds = new Set(catalog.selectableExclusionIds);
+const selectableById = new Map(selectableExclusions.map((item) => [item.id, item]));
 
 /** Server-only: selectable exclusions in `selectableExclusionIds` order. */
 export function getSelectableExclusions(): SelectableExclusion[] {
   return selectableExclusions.map((item) => ({ ...item, aliases: [...item.aliases] }));
 }
 
+/** Server-only: the selectable exclusion with this id, without copying the list. */
+export function findSelectableExclusion(id: string): Readonly<SelectableExclusion> | undefined {
+  return selectableById.get(id);
+}
+
 export function isSelectableExclusionId(id: string): boolean {
-  return selectableIds.has(id);
+  return selectableById.has(id);
 }

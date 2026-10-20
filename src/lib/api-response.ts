@@ -1,3 +1,4 @@
+import { logServerError } from "@/lib/log";
 import type { ApiErrorDTO } from "@/types";
 
 export function jsonResponse(body: unknown, status = 200): Response {
@@ -17,9 +18,7 @@ export const unauthorized = () => errorResponse(401, "unauthorized", "Zaloguj si
 export const configMissing = () =>
   errorResponse(503, "config-missing", "Usługa jest chwilowo niedostępna. Spróbuj ponownie później.");
 
-/** Logs only the operation and error details (no user ids, emails or request bodies). */
 export function serverError(operation: string, error: unknown): Response {
-  // eslint-disable-next-line no-console
-  console.error(`[api] ${operation}:`, error instanceof Error ? error.message : "unknown error");
+  logServerError("api", operation, error);
   return errorResponse(500, "server-error", "Coś poszło nie tak. Spróbuj ponownie później.");
 }

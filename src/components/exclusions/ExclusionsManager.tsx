@@ -1,6 +1,6 @@
-import { useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Check, Plus, Search, Trash2 } from "lucide-react";
-import { ServerError } from "@/components/auth/ServerError";
+import { ServerError } from "@/components/ServerError";
 import { useExclusions, type ExclusionsError, type PendingAction } from "@/components/hooks/useExclusions";
 import { Button } from "@/components/ui/button";
 import type { SelectableExclusion } from "@/lib/catalog/selectable-exclusions";
@@ -63,14 +63,61 @@ export default function ExclusionsManager({ initialExclusions, selectableExclusi
   const addedIds = useMemo(() => new Set(exclusions.map((item) => item.productId)), [exclusions]);
   const trimmedQuery = query.trim();
 
+  // The clicked button is disabled or unmounted by the action, so focus is restored explicitly
+  // once the server-confirmed state has rendered.
+  const [status, setStatus] = useState("");
+  const rootRef = useRef<HTMLDivElement>(null);
+  // CSS selectors tried in order after the next render; the first enabled match receives focus.
+  const focusTarget = useRef<string[] | null>(null);
+
+  useEffect(() => {
+    const selectors = focusTarget.current;
+    const root = rootRef.current;
+    if (!selectors || !root) return;
+    for (const selector of selectors) {
+      const target = root.querySelector<HTMLElement>(selector);
+      if (!target) continue;
+      if (target instanceof HTMLButtonElement && target.disabled) return; // retry after pending clears
+      target.focus();
+      focusTarget.current = null;
+      return;
+    }
+  });
+
+  const removeButton = (productId: string) => `[data-remove-id="${CSS.escape(productId)}"]`;
+  const addButton = (productId: string) => `[data-add-id="${CSS.escape(productId)}"]`;
+
+  const handleAdd = async (item: SelectableExclusion) => {
+    setStatus("");
+    focusTarget.current = null;
+    const ok = await addExclusion(item.id);
+    if (ok) setStatus(`Dodano: ${item.name}.`);
+    focusTarget.current = [ok ? removeButton(item.id) : addButton(item.id)];
+  };
+
+  const handleRemove = async (item: ExclusionDTO) => {
+    setStatus("");
+    focusTarget.current = null;
+    const index = exclusions.findIndex((entry) => entry.productId === item.productId);
+    const neighbours = [exclusions.at(index + 1), index > 0 ? exclusions.at(index - 1) : undefined];
+    const ok = await removeExclusion(item.productId);
+    if (ok) setStatus(`Usunięto: ${item.name}.`);
+    focusTarget.current = ok
+      ? [...neighbours.flatMap((entry) => (entry ? [removeButton(entry.productId)] : [])), "#your-exclusions-heading"]
+      : [removeButton(item.productId)];
+  };
+
   return (
-    <div className="flex flex-col gap-6">
+    <div ref={rootRef} className="flex flex-col gap-6">
       <div aria-live="polite">
         <ErrorMessage error={error} />
       </div>
+      <p role="status" className="sr-only">
+        {status}
+      </p>
 
       <section aria-labelledby="your-exclusions-heading" className={sectionClass}>
-        <h2 id="your-exclusions-heading" className={headingClass}>
+        <h2 id="your-exclusions-heading" tabIndex={-1} className={headingClass}>
           Twoje wykluczenia
         </h2>
         {exclusions.length === 0 ? (
@@ -90,11 +137,12 @@ export default function ExclusionsManager({ initialExclusions, selectableExclusi
                     )}
                   </div>
                   <Button
+                    data-remove-id={item.productId}
                     type="button"
                     variant="ghost"
                     disabled={action !== undefined}
                     aria-label={action ? undefined : `Usuń ${item.name}`}
-                    onClick={() => void removeExclusion(item.productId)}
+                    onClick={() => void handleRemove(item)}
                     className={cn(
                       actionClass,
                       "border border-white/20 text-red-200 hover:bg-red-500/20 hover:text-red-100",
@@ -165,11 +213,12 @@ export default function ExclusionsManager({ initialExclusions, selectableExclusi
                 <li key={item.id} className={rowClass}>
                   <span className="min-w-0 break-words">{item.name}</span>
                   <Button
+                    data-add-id={item.id}
                     type="button"
                     variant="ghost"
                     disabled={added || busy}
                     aria-label={added || busy ? undefined : `Dodaj ${item.name}`}
-                    onClick={() => void addExclusion(item.id)}
+                    onClick={() => void handleAdd(item)}
                     className={cn(
                       actionClass,
                       added

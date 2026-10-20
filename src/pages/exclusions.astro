@@ -1,9 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Topbar from "@/components/Topbar.astro";
-import { ServerError } from "@/components/auth/ServerError";
+import { ServerError } from "@/components/ServerError";
 import ExclusionsManager from "@/components/exclusions/ExclusionsManager";
 import { getSelectableExclusions } from "@/lib/catalog/selectable-exclusions";
+import { logServerError } from "@/lib/log";
 import { listExclusions } from "@/lib/services/exclusions";
 import { createClient } from "@/lib/supabase";
 import type { ExclusionDTO } from "@/types";
@@ -19,8 +20,7 @@ if (supabase && user) {
   try {
     exclusions = await listExclusions(supabase, user.id);
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("[page] list exclusions:", error instanceof Error ? error.message : "unknown error");
+    logServerError("page", "list exclusions", error);
   }
 }
 const selectableExclusions = getSelectableExclusions();

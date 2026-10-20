@@ -61,7 +61,7 @@ Przed publikacją stagingu oraz produkcji wykonać `node scripts/deploy-manifest
 
 Właściciel wykonuje poniższe czynności w panelach dostawców; agent nie zastępuje ich szerokim OAuth tokenem.
 
-1. Utworzyć dwa projekty Supabase Free w regionie Frankfurt. W obu pozostawić rejestrację e-mail/hasło i wyłączyć potwierdzanie e-maila. Nie używać service_role: SUPABASE_KEY to anon/publishable.
+1. Utworzyć dwa projekty Supabase Free w regionie Frankfurt. W obu pozostawić rejestrację e-mail/hasło i wyłączyć potwierdzanie e-maila. Minimalna długość hasła (Authentication → Policies) musi być równa `MIN_PASSWORD_LENGTH` z `src/lib/auth-errors.ts` i `minimum_password_length` w `supabase/config.toml` (obecnie 6), bo komunikaty walidacji i błędu słabego hasła podają tę liczbę. Nie używać service_role: SUPABASE_KEY to anon/publishable.
 2. Utworzyć lub zweryfikować Workery o dokładnych nazwach `meal-adapt-staging` i `meal-adapt`, z adresami workers.dev. Oba Workery początkowo odpowiadają statusem 503 i treścią „Wdrożenie w przygotowaniu”. Właściciel dodaje właściwe sekrety SUPABASE_URL i SUPABASE_KEY do obu wersji awaryjnych, zgodne z plikami dla danego środowiska, zanim zapiszemy baseline version ID. Dzięki temu planowana publikacja nie zmienia sekretów względem baseline. Minimalny kod wersji awaryjnej:
 
    ```js

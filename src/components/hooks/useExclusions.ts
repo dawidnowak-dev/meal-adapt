@@ -38,21 +38,28 @@ async function toError(response: Response): Promise<ExclusionsError> {
 export function useExclusions(initialExclusions: ExclusionDTO[]) {
   const [exclusions, setExclusions] = useState<ExclusionDTO[]>(initialExclusions);
   const [pending, setPending] = useState<Partial<Record<string, PendingAction>>>({});
-  const [error, setError] = useState<ExclusionsError | null>(null);
+  // The error remembers its product, so an action on another product never hides it.
+  const [failure, setFailure] = useState<{ productId: string; error: ExclusionsError } | null>(null);
   // Synchronous guard against double clicks before the pending state re-renders.
   const inFlight = useRef(new Set<string>());
 
   const run = useCallback(
-    async (productId: string, action: PendingAction, perform: () => Promise<ExclusionsError | null>) => {
-      if (inFlight.current.has(productId)) return;
+    async (
+      productId: string,
+      action: PendingAction,
+      perform: () => Promise<ExclusionsError | null>,
+    ): Promise<boolean> => {
+      if (inFlight.current.has(productId)) return false;
       inFlight.current.add(productId);
-      setError(null);
+      setFailure((prev) => (prev?.productId === productId ? null : prev));
       setPending((prev) => ({ ...prev, [productId]: action }));
       try {
-        const failure = await perform();
-        if (failure) setError(failure);
+        const error = await perform();
+        if (error) setFailure({ productId, error });
+        return error === null;
       } catch {
-        setError({ kind: "message", message: NETWORK_ERROR_MESSAGE });
+        setFailure({ productId, error: { kind: "message", message: NETWORK_ERROR_MESSAGE } });
+        return false;
       } finally {
         inFlight.current.delete(productId);
         setPending((prev) => Object.fromEntries(Object.entries(prev).filter(([id]) => id !== productId)));
@@ -92,5 +99,5 @@ export function useExclusions(initialExclusions: ExclusionDTO[]) {
     [run],
   );
 
-  return { exclusions, pending, error, addExclusion, removeExclusion };
+  return { exclusions, pending, error: failure?.error ?? null, addExclusion, removeExclusion };
 }
