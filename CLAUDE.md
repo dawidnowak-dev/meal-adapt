@@ -11,6 +11,8 @@ This file provides guidance to AI Agent when working with code in this repositor
 - `npm run lint:fix` — auto-fix lint issues
 - `npm run format` — Prettier (includes prettier-plugin-astro + prettier-plugin-tailwindcss)
 - `npm run smoke` — dependency-free auth-flow smoke test (`scripts/smoke.mjs`) against a running server, `BASE_URL` env (default `http://localhost:4321`). Run after dependency upgrades; CI runs it against the production preview with a local Supabase.
+- `npx supabase db reset` — recreate the local database and apply all migrations from `supabase/migrations/`.
+- `npx supabase test db` — run pgTAP RLS tests from `supabase/tests/` against the local Supabase (requires Docker and `npx supabase start`). CI runs it in the `smoke` job.
 
 Pre-commit hooks: husky + lint-staged runs `eslint --fix` on `*.{ts,tsx,astro}` and `prettier --write` on `*.{json,css,md}`.
 

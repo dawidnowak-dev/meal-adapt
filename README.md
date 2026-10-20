@@ -58,6 +58,8 @@ npm run dev
 - `npm run smoke` - Smoke test the auth flow against a running server (`BASE_URL`, defaults to `http://localhost:4321`)
 - `npm run check:catalog` - Check integrity of the meal catalog and its acceptance cases (`src/data/meal-catalog*.v1.json`)
 - `npm run test:catalog` - Run the catalog checker tests (native `node:test`)
+- `npx supabase db reset` - Recreate the local database and apply migrations (requires Docker)
+- `npx supabase test db` - Run the pgTAP RLS tests from `supabase/tests/` (requires Docker)
 
 The meal catalog data contract, versioning rules and review procedure are documented in [docs/catalog/README.md](docs/catalog/README.md).
 
@@ -81,32 +83,30 @@ This project uses [Supabase](https://supabase.com/) for authentication. Environm
 
 ### First-time setup (local, no cloud project needed)
 
-Requires [Docker](https://www.docker.com/) and ~7 GB RAM.
+These steps mirror the `smoke` job in `.github/workflows/ci.yml`. The `supabase/` config folder is already committed.
 
-1. Create your `.env` file:
+1. Install a container runtime supported by the Supabase CLI — [Docker Desktop](https://www.docker.com/products/docker-desktop/), [OrbStack](https://orbstack.dev/) or [colima](https://github.com/abiosoft/colima) — and make sure it is running. Requires ~7 GB RAM.
 
-```bash
-cp .env.example .env
-```
-
-2. Initialize the local Supabase project (creates a `supabase/` config folder):
-
-```bash
-npx supabase init
-```
-
-3. Start the local stack (downloads Docker images on first run):
+2. Start the local stack (downloads Docker images on first run and applies migrations from `supabase/migrations/`):
 
 ```bash
 npx supabase start
 ```
 
-4. Copy the credentials printed by the CLI into your `.env` and `.dev.vars`:
+3. Read the local credentials:
+
+```bash
+npx supabase status -o env
+```
+
+4. Write `API_URL` and `ANON_KEY` from that output into both `.env` and `.dev.vars`:
 
 ```
 SUPABASE_URL=http://127.0.0.1:54321
-SUPABASE_KEY=<anon key from CLI output>
+SUPABASE_KEY=<ANON_KEY>
 ```
+
+Do not change `.env.staging`, `.env.production` or `.dev.vars.staging` — they hold the deployed environments' credentials.
 
 5. To stop the stack when done:
 
@@ -116,7 +116,24 @@ npx supabase stop
 
 The local Studio UI is available at `http://localhost:54323`.
 
-No database tables or migrations are required — this project uses Supabase Auth's built-in `auth.users` table only.
+### Database migrations and RLS tests
+
+Migrations live in `supabase/migrations/` (`YYYYMMDDHHmmss_short_description.sql`), pgTAP tests in `supabase/tests/`. Both require the local stack (Docker):
+
+```bash
+npx supabase db reset   # recreate the local database and apply all migrations
+npx supabase test db    # run the RLS tests
+```
+
+Each test file runs in a single transaction ending with `rollback`, so it leaves no data behind. CI runs `supabase test db` in the `smoke` job before the build.
+
+### Testing on a phone in the same network
+
+Expose the dev server on your local network and open the printed network address on the phone:
+
+```bash
+npm run dev -- --host
+```
 
 ### Using a cloud Supabase project instead
 
@@ -202,7 +219,7 @@ It needs a reachable Supabase instance (local or cloud) with email confirmation 
 GitHub Actions runs two jobs on every push and PR to `main`:
 
 - **ci** — meal catalog check and tests (`npm run check:catalog`, `npm run test:catalog`), lint, `astro check` and build. Configure `SUPABASE_URL` and `SUPABASE_KEY` as repository secrets for the build step.
-- **smoke** — starts a local Supabase via the Supabase CLI, builds, serves the production preview on the Cloudflare runtime and runs `npm run smoke` against it. No secrets required.
+- **smoke** — starts a local Supabase via the Supabase CLI, runs the RLS tests (`supabase test db`), builds, serves the production preview on the Cloudflare runtime and runs `npm run smoke` against it. No secrets required.
 
 ## License
 
